@@ -3,10 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     watch: {
-      compile: {
-        files: ['src/**/*.cjsx', 'src/**/*.coffee'],
-        tasks: ['compile']
-      }
+      tasks: ["compile"]
     },
 
     browserify: {
@@ -19,7 +16,7 @@ module.exports = function(grunt) {
     cjsx: {
       compile: {
         files: {
-          'tmp/index.js': 'src/index.coffee',
+          'tmp/client.js': 'src/client.coffee',
           'tmp/views.js': 'src/views.coffee'
         }
       }
