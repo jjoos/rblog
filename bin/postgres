@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+while true;
+do
+  if [[ -e ./tmp/postgres/postmaster.pid ]]; then
+    head -n 1 ./tmp/postgres/postmaster.pid | xargs -n 1 ps -p >/dev/null
+    if [[ $? != '0' ]]; then
+      echo 'Removing postgres pid file, process not running.'
+      rm tmp/postgres/postmaster.pid
+    elif [[ ! $said_that_on_existing_database ]]; then
+      echo 'Using existing postgress instance.'
+      said_that_on_existing_database=true
+    fi
+  fi
+
+  if [[ ! -e ./tmp/postgres/postmaster.pid ]]; then
+    echo 'Starting database.'
+    postgres -D './tmp/postgres' -k . -p $DATABASE_PORT
+  fi
+
+  sleep 5
+done
