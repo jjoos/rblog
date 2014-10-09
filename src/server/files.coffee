@@ -14,7 +14,6 @@ cacheFile = (path, data) ->
 
 watchFile = (path) ->
   fs.watch path, (event) ->
-    console.info "reread #{path}"
     readFile path, (data) -> cacheFile(path, data) if event == 'change'
 
 getFile = (path, callback) ->
@@ -25,7 +24,6 @@ getFile = (path, callback) ->
   readFile path, (data) ->
     cacheFile path, data
     callback data
-
-  watchFile path
+    watchFile path
 
 module.exports.getFile = getFile
