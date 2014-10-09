@@ -24,7 +24,8 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-coffee-react": "*",
     "react-tools": "0.11.2",
-    "coffee-reactify": "~0.5.2"
+    "coffee-reactify": "~0.5.2",
+    "nodemon": ""
   },
   "dependencies": {
     "react": "0.11.2",
