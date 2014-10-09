@@ -14,16 +14,14 @@ pg.connect conString, (err, client, done) ->
 
   #   console.log result.rows
 
+static_file_prefx = '/assets'
+
 server = http.createServer (request, response) ->
-  if request.url == '/style.css'
-    files.getFile 'assets/style.css', (data) ->
-      response.writeHead 200, 'Content-Type': 'text/css'
-      response.write data
-      response.end()
-  else if request.url == '/bundle.js'
-    files.getFile 'assets/bundle.js', (data) ->
-      response.writeHead 200, 'Content-Type': 'text/javascript'
-      response.write data
+  if request.url.slice(0, static_file_prefx.length) == static_file_prefx
+    relative_path = request.url.substring(1, request.url.length)
+    files.getFile relative_path, (file) ->
+      response.writeHead 200, 'Content-Type': file.contentType
+      response.write file.data
       response.end()
   else
     posts = [
@@ -32,8 +30,8 @@ server = http.createServer (request, response) ->
         body: 'Body of blog post'
       ]
     appHtml = React.renderComponentToString views.Index(posts: posts)
-    files.getFile 'assets/index.html', (data) ->
-      appHtml = data.replace '<body />', "<body>#{appHtml}</body>"
+    files.getFile 'assets/index.html', (file) ->
+      appHtml = file.data.replace '<body />', "<body>#{appHtml}</body>"
 
       response.writeHead 200, 'Content-Type': 'text/html'
       response.write appHtml
