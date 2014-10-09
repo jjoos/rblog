@@ -1,18 +1,7 @@
 http = require 'http'
-pg = require 'pg'
 React = require 'react'
 views = require './views'
 files = require './server/files'
-
-conString = "postgres://localhost:3100/hackerone_development"
-pg.connect conString, (err, client, done) ->
-  return console.error("error fetching client from pool", err) if err
-
-  # client.query "SELECT * FROM users", (err, result) ->  
-  #   done()
-  #   return console.error("error running query", err) if err
-
-  #   console.log result.rows
 
 static_file_prefx = '/assets'
 
