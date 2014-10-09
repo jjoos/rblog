@@ -1,29 +1,8 @@
 http = require 'http'
 pg = require 'pg'
-# @jsx React.DOM
-
 React = require 'react'
 views = require './views'
-fs = require 'fs'
-
-template = ''
-stylesheet = ''
-javascript = ''
-
-fs.readFile 'assets/index.html', 'utf8', (err, data) ->
-  return console.log err if err
-
-  template = data
-
-fs.readFile 'assets/style.css', 'utf8', (err, data) ->
-  return console.log err if err
-
-  stylesheet = data
-
-fs.readFile 'assets/bundle.js', 'utf8', (err, data) ->
-  return console.log err if err
-
-  javascript = data
+files = require './server/files'
 
 conString = "postgres://localhost:3100/hackerone_development"
 pg.connect conString, (err, client, done) ->
@@ -37,13 +16,15 @@ pg.connect conString, (err, client, done) ->
 
 server = http.createServer (request, response) ->
   if request.url == '/style.css'
-    response.writeHead 200, 'Content-Type': 'text/css'
-    response.write stylesheet
-    response.end()
+    files.getFile 'assets/style.css', (data) ->
+      response.writeHead 200, 'Content-Type': 'text/css'
+      response.write data
+      response.end()
   else if request.url == '/bundle.js'
-    response.writeHead 200, 'Content-Type': 'text/javascript'
-    response.write javascript
-    response.end()
+    files.getFile 'assets/bundle.js', (data) ->
+      response.writeHead 200, 'Content-Type': 'text/javascript'
+      response.write data
+      response.end()
   else
     posts = [
         link: '/test-blog-post'
@@ -51,10 +32,11 @@ server = http.createServer (request, response) ->
         body: 'Body of blog post'
       ]
     appHtml = React.renderComponentToString views.Index(posts: posts)
-    appHtml = template.replace '<body />', "<body>#{appHtml}</body>"
+    files.getFile 'assets/index.html', (data) ->
+      appHtml = data.replace '<body />', "<body>#{appHtml}</body>"
 
-    response.writeHead 200, 'Content-Type': 'text/html'
-    response.write appHtml
-    response.end()
+      response.writeHead 200, 'Content-Type': 'text/html'
+      response.write appHtml
+      response.end()
 
 server.listen 8888
