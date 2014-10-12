@@ -2,6 +2,9 @@ http = require 'http'
 React = require 'react'
 views = require './views'
 files = require './server/files'
+db = require './server/database.coffee'
+_ = require 'underscore'
+require './server/configuration.coffee'
 
 static_file_prefx = '/assets'
 
@@ -13,11 +16,10 @@ server = http.createServer (request, response) ->
       response.write file.data
       response.end()
   else
-    posts = [
-        link: '/test-blog-post'
-        title: 'Test title'
-        body: 'Body of blog post'
-      ]
+    posts = db.Post.findAll().success (posts) ->
+      posts = _(posts).map (post) ->
+        post.dataValues
+
     appHtml = React.renderComponentToString views.Index(posts: posts)
     files.getFile 'assets/index.html', (file) ->
       appHtml = file.data.replace '<body />', "<body>#{appHtml}</body>"
@@ -26,4 +28,4 @@ server = http.createServer (request, response) ->
       response.write appHtml
       response.end()
 
-server.listen 8888
+server.listen process.env.WEB_PORT

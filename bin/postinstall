@@ -22,7 +22,7 @@ if [[ ! -d ./tmp/postgres ]]; then
   echoStep "Creating database"
   createdb -p 3910 -h localhost rblog_development
 
-  ./bin/create_schema
+  ./bin/db_setup
 
   echoStep "Killed postgres and waiting two seconds for postgresql shutdown."
   kill $POSTGRES_PID
