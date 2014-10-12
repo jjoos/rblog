@@ -14,7 +14,6 @@ fi
 
 # Resetting repo to 'just' cloned state.
 git clean -ffdx
-git checkout develop
 
 if [[ ! -e .env ]]; then
   echoStep "Creating a dot env file."
@@ -30,7 +29,3 @@ if [[ ! -d ./tmp/postgres ]]; then
   echoStep "Creating a data folder for postgres."
   initdb './tmp/postgres' -E utf8 --locale en_US
 fi
-
-type npm >/dev/null 2>&1 || { echo >&2 "I require npm but it's not installed.  Aborting."; exit 1; }
-
-npm install

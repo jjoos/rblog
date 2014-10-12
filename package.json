@@ -19,18 +19,23 @@
     "url": "https://github.com/jjoos/rblog/issues"
   },
   "devDependencies": {
+    "grunt-cli": "0.1.13",
     "grunt": "0.4.5",
     "grunt-browserify": "3.0.1",
     "grunt-contrib-watch": "0.6.1",
-    "grunt-coffee-react": "*",
+    "grunt-coffee-react": "1.0.1",
     "react-tools": "0.11.2",
-    "coffee-react": "",
-    "nodemon": ""
+    "coffee-react": "0.1.1",
+    "nodemon": "1.2.1"
   },
   "dependencies": {
     "react": "0.11.2",
-    "backbone": "",
-    "underscore": "",
-    "jquery": ""
+    "backbone": "1.1.2",
+    "underscore": "1.7.0",
+    "jquery": "2.1.1"
+  },
+  "scripts": {
+    "start": "bin/start",
+    "preinstall": "bin/setup"
   }
 }
