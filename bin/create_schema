@@ -1,0 +1,5 @@
+#!/usr/bin/env cjsx
+
+db = require '../src/server/database.coffee'
+
+db.sequelize.sync force: true

@@ -14,5 +14,11 @@ You will need the Sublime Package Manager.
 source:
 https://github.com/reactjs/sublime-react
 
+### Ubuntu
+sudo apt-get install libpq-dev build-essential
+
+http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc :
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 ## Running
 `npm start`

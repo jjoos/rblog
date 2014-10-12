@@ -5,7 +5,7 @@ function echoStep {
   echo $'\033[0m'
 }
 
-echoStep "Setting up core environment."
+echoStep "Setting up RBlog environment."
 
 if [ ! -d ".git" ]; then
   echoStep "You should run this script from the git repository root of RBlog"
@@ -20,12 +20,6 @@ if [[ ! -e .env ]]; then
   cat <<"DOTENVFILE" > .env
 WEB_PORT=3900
 DATABASE_PORT=3910
+DATABASE_HOST=localhost
 DOTENVFILE
-fi
-
-mkdir -p './tmp/pids/'
-
-if [[ ! -d ./tmp/postgres ]]; then
-  echoStep "Creating a data folder for postgres."
-  initdb './tmp/postgres' -E utf8 --locale en_US
 fi

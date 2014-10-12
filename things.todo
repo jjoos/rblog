@@ -1,3 +1,9 @@
+Database:
+  ☐ Implement models
+Static assets:
+  ☐ Run nginx in the long run, stupid to server statics with node
+  ☐ Serve images
 Styling:
+  ☐ Add scss pipeline
 http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
 http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html

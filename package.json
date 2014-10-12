@@ -1,11 +1,10 @@
 {
   "author": "JJoos",
   "name": "RBlog",
-  "description": "A blog demo in React",
+  "description": "Blog implemented with reactjs and nodejs.",
   "version": "0.2.7",
   "license": "MIT",
   "homepage": "https://github.com/jjoos/rblog",
-  "description": "Blog implemented with reactjs and nodejs.",
   "keywords": [
     "react",
     "blog",
@@ -33,10 +32,15 @@
     "react": "0.11.2",
     "backbone": "1.1.2",
     "underscore": "1.7.0",
-    "jquery": "2.1.1"
+    "jquery": "2.1.1",
+    "pg": "3.5.0",
+    "sequelize": "~2.0.0-rc1",
+    "sequelize-cli": "~0.3.3",
+    "dotenv": "~0.4.0"
   },
   "scripts": {
     "start": "bin/start",
-    "preinstall": "bin/setup"
+    "preinstall": "bin/preinstall",
+    "postinstall": "bin/postinstall"
   }
 }
