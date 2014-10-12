@@ -16,7 +16,7 @@ if [[ ! -d ./tmp/postgres ]]; then
   postgres -D 'tmp/postgres' -k . -p 3910 -h localhost &
   POSTGRES_PID=$!
 
-  echoStep "Dropping database"  
+  echoStep "Dropping database"
   dropdb -p 3910 -h localhost rblog_development
 
   echoStep "Creating database"
