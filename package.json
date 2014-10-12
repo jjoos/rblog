@@ -5,6 +5,7 @@
   "version": "0.2.7",
   "license": "MIT",
   "homepage": "https://github.com/jjoos/rblog",
+  "description": "Blog implemented with reactjs and nodejs.",
   "keywords": [
     "react",
     "blog",
