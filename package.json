@@ -36,7 +36,8 @@
     "pg": "3.5.0",
     "sequelize": "~2.0.0-rc1",
     "sequelize-cli": "~0.3.3",
-    "dotenv": "~0.4.0"
+    "dotenv": "~0.4.0",
+    "negotiator": "~0.4.8"
   },
   "scripts": {
     "start": "bin/start",

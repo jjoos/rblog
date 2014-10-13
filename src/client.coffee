@@ -64,5 +64,3 @@ $(document).ready ->
     if href.slice(protocol.length) isnt protocol
       event.preventDefault()
       router.navigate href, true
-
-  router.navigate '', true
