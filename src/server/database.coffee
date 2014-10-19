@@ -1,8 +1,9 @@
 require './configuration.coffee'
 Sequelize = require 'sequelize'
 
-sequelize = 
-	new Sequelize "postgres://#{process.env.DATABASE_HOST}:#{process.env.DATABASE_PORT}/rblog_development"
+sequelize =
+  new Sequelize "postgres://#{process.env.DATABASE_HOST}:"+
+    "#{process.env.DATABASE_PORT}/rblog_development"
 
 sequelize
   .authenticate()
@@ -24,13 +25,3 @@ db =
   Post: post
 
 module.exports = db
-
-# conString = "postgres://localhost:3100/hackerone_development"
-# pg.connect conString, (err, client, done) ->
-#   return console.error("error fetching client from pool", err) if err
-
-#   client.query "SELECT * FROM users", (err, result) ->  
-#     done()
-#     return console.error("error running query", err) if err
-
-#     console.log result.rows

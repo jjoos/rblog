@@ -17,7 +17,7 @@ Summary = React.createClass
 
   render: ->
     <article>
-      <a href={ @props.post.link }>
+      <a href={ "/posts/#{@props.post.slug}" }>
         <h2>{ @props.post.title }</h2>
       </a>
       <p>{ @props.post.body.substring(0,10) }...</p>
@@ -40,7 +40,7 @@ SidebarSection = React.createClass
 BlogLayout = React.createClass
   displayName: 'BlogLayout'
 
-  menu: -> 
+  menu: ->
     <nav>
       <ul>
         <li>
@@ -55,7 +55,11 @@ BlogLayout = React.createClass
   sidebar: ->
     <aside>
       <SidebarSection id="about" titl="About me">
-        <p>Typo is a WordPress theme based entirely on a balanced typographic design. A strict grid layout keeps everything tidy, allowing the content to shine. <a href="/about" className="more">Find out more »</a></p>
+        <p>Typo is a WordPress theme based entirely on a balanced typographic
+      design. A strict grid layout keeps everything tidy, allowing the
+      content to shine.
+          <a href="/about" className="more">Find out more »</a>
+        </p>
       </SidebarSection>
       <SidebarSection id="categories" title="Categories">
         <ul>
@@ -115,9 +119,9 @@ BlogLayout = React.createClass
 Index = React.createClass
   displayName: 'Index'
 
-  posts: ->  
+  posts: ->
     for post in @props.posts
-      <Summary post={post} key={post.link} />
+      <Summary post={post} key={post.slug} />
 
   render: ->
     <BlogLayout>

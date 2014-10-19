@@ -8,7 +8,7 @@ type_extension_map = [
     encoding: 'utf8'
   ,
     extension: '.js'
-    type: 'text/javascript'
+    type: 'application/javascript'
     encoding: 'utf8'
   ,
     extension: '.html'
@@ -46,8 +46,8 @@ readFile = (path, callback) ->
   # TODO sanitize path so it cannot escape some public folder
   fs.readFile path, encoding: type.encoding, (error, data) ->
     return console.log error if error
-
-    callback { data: data, contentType: type.type }
+    #console.info "data: #{data}" if type.encoding == 'binary'
+    callback { data: data, contentType: type.type, encoding: type.encoding }
 
 cacheFile = (path, file) ->
   cache[path] = file
@@ -66,4 +66,6 @@ getFile = (path, callback) ->
     callback data
     watchFile path
 
+module.exports.supportedContentTypes =
+  type_extension_map.map (file) -> file.type
 module.exports.getFile = getFile
