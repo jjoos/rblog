@@ -9,19 +9,36 @@ module.exports = function(grunt) {
       }
     },
 
-    browserify: {
-      all: {
-        src: 'tmp/client.js',
-        dest: 'assets/bundle.js'
+    cjsx: {
+      glob_to_multiple: {
+        expand: true,
+        flatten: false,
+        cwd: 'src',
+        src: ['**/*.coffee'],
+        dest: 'tmp/es6',
+        ext: '.js'
       }
     },
 
-    cjsx: {
-      compile: {
-        files: {
-          'tmp/client.js': 'src/client.coffee',
-          'tmp/views.js': 'src/views.coffee'
-        }
+    traceur: {
+      options: {
+        experimental: true,
+        blockBinding: true
+      },
+      custom: {
+        files: [{
+          expand: true,
+          cwd: 'tmp/es6',
+          src: '**/*.js',
+          dest: 'tmp/es5'
+        }]
+      },
+    },
+
+    browserify: {
+      all: {
+        src: 'tmp/es5/client.js',
+        dest: 'assets/bundle.js'
       }
     },
 
@@ -33,7 +50,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-coffee-react');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-traceur');
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('compile', ['cjsx', 'browserify']);
+  grunt.registerTask('compile', ['cjsx', 'traceur', 'browserify']);
 };
