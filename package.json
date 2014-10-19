@@ -26,6 +26,8 @@
     "grunt-coffee-react": "1.0.1",
     "react-tools": "0.11.2",
     "coffee-react": "0.1.1",
+    "coffeelint": "git://github.com/leyyinad/coffeelint-cjsx",
+    "grunt-coffeelint": "0.0.13",
     "nodemon": "1.2.1"
   },
   "dependencies": {

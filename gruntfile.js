@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     watch: {
       compile: {
         files: ['src/**/*.coffee'],
-        tasks: ['compile']
+        tasks: ['compile', 'coffeelint']
       }
     },
 
@@ -24,12 +24,16 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    coffeelint: {
+      app: ['src/**/*.coffee']
+    }
   });
 
   grunt.loadNpmTasks('grunt-coffee-react');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
-
+  grunt.loadNpmTasks('grunt-coffeelint');
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('compile', ['cjsx', 'browserify']);
 };
