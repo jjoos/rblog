@@ -4,6 +4,8 @@ views = require './views'
 files = require './server/files'
 db = require './server/database.coffee'
 Negotiator = require 'negotiator'
+global.task = require 'taskjs'
+Q = require 'q'
 
 _ = require 'underscore'
 require './server/configuration.coffee'
@@ -24,7 +26,9 @@ server = http.createServer (request, response) ->
     files.getFile 'assets/template.html', (template) ->
       appHtml = ''
       if request.url == '/'
-        db.Post.findAll().success (posts) ->
+        Q.spawn ->
+          posts = yield db.Post.findAll()
+
           posts = _(posts).map (post) ->
             post.dataValues
 

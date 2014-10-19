@@ -1,5 +1,8 @@
 # Readme
 
+## Requirements
+NodeJS 11.4 or higher
+
 ## Install
 `npm install`
 

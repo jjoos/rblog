@@ -4,9 +4,15 @@ module.exports = function(grunt) {
 
     watch: {
       compile: {
+        files: ['src/*.coffee'],
+        tasks: ['compile']
+      },
+
+      lint: {
         files: ['src/**/*.coffee'],
-        tasks: ['compile', 'coffeelint']
+        tasks: ['coffeelint']
       }
+
     },
 
     cjsx: {
@@ -14,7 +20,7 @@ module.exports = function(grunt) {
         expand: true,
         flatten: false,
         cwd: 'src',
-        src: ['**/*.coffee'],
+        src: ['*.coffee'],
         dest: 'tmp/es6',
         ext: '.js'
       }
@@ -52,6 +58,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-traceur');
   grunt.loadNpmTasks('grunt-coffeelint');
+
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('compile', ['cjsx', 'traceur', 'browserify']);
 };
