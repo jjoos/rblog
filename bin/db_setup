@@ -2,10 +2,22 @@
 
 db = require '../src/server/database.coffee'
 
+db.Comment.sequelize.sync
 db.Post.sequelize.sync force: true
   .success ->
-    db.Post
+    comment1 = db.Comment
       .create
+        author: 'Ayende Rahien'
+        body: 'Made me think that it was my code that was throwing this.'
+
+    comment2 = db.Comment
+      .create
+        author: 'Ayende Rahien'
+        body: 'Made me think that it was my code that was throwing this.'
+
+    post1 = db.Post
+      .create
+        comments: [comment1, comment2]
         slug: 'mono-frustrations'
         title: 'Mono frustrations'
         author: 'Ayende Rahien'
@@ -42,6 +54,7 @@ db.Post.sequelize.sync force: true
                       at HelloWorld.MainClass.Main (System.String[] args) [0x00006] in /home/ayende/HelloWorld/HelloWorld/Program.cs:11
 
               This is annoying in that it isn’t implemented, but worse from my point of view is that I don’t see any ZipArchive in the stack trace. That made me think that it was my code that was throwing this."""
+
     db.Post
       .create
         slug: 'complex-nested-structures-in-ravendb'
@@ -123,7 +136,6 @@ db.Post.sequelize.sync force: true
                   .TransformWith<SingleApartment, Apartment>()
                   .AddTransformerParameter("apartmentNumber", 201)
                   .ToList();
-
 
               var apartment = session.Load<SingleApartment, Apartment>("building/123",
                       configuration => configuration.AddTransformerParameter("apartmentNumber", 102));

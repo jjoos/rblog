@@ -18,15 +18,22 @@ sequelize
     else
       console.log 'Connection has been established successfully.'
 
-post = sequelize.define 'Post',
-    slug: Sequelize.STRING
-    title: Sequelize.STRING
-    author: Sequelize.STRING
-    tags: Sequelize.ARRAY(Sequelize.TEXT)
-    body: Sequelize.TEXT
+Post = sequelize.define 'Post',
+  slug: Sequelize.STRING
+  title: Sequelize.STRING
+  author: Sequelize.STRING
+  tags: Sequelize.ARRAY(Sequelize.TEXT)
+  body: Sequelize.TEXT
+
+Comment = sequelize.define 'Comment',
+  author: Sequelize.STRING
+  body: Sequelize.TEXT
+
+Post.hasMany Comment
 
 db =
   sequelize: sequelize
-  Post: post
+  Post: Post
+  Comment: Comment
 
 module.exports = db

@@ -41,18 +41,25 @@ server = http.createServer (request, response) ->
   else if type == 'application/json'
     # Api, should be done by a proper api
     if request.url in ['/posts', '/posts/']
-      db.Post.findAll().success (posts) ->
-        posts = _(posts).map (post) ->
-          post.dataValues
+      Q.spawn ->
+        posts = yield Data.updatePosts()
 
         response.writeHead 200, 'Content-Type': type
-        response.end JSON.stringify posts
+        response.end JSON.stringify Data.posts
     else if match = /\/posts\/([a-zA-Z0-9\-]+)/.exec request.url
       Q.spawn ->
         slug = match[1]
         yield Data.updatePost slug
+
         response.writeHead 200, 'Content-Type': type
         response.end JSON.stringify Data.post slug
+    else if match = /\/posts\/([a-zA-Z0-9\-]+)\/comments/.exec request.url
+      Q.spawn ->
+        slug = match[1]
+        yield Data.updatePost slug
+
+        response.writeHead 200, 'Content-Type': type
+        response.end JSON.stringify Data.commentsForPost slug
   else
     # Content type not supported
     response.writeHead 415
