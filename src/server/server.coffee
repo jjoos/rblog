@@ -6,6 +6,7 @@ View = require './view.coffee'
 files = require './files.coffee'
 Data = require './data.coffee'
 Router = require './router.coffee'
+db = require './database.coffee'
 
 _ = require 'underscore'
 require './configuration.coffee'
@@ -23,11 +24,20 @@ server = http.createServer (request, response) ->
   # 404 on favicon
   response.writeHead 404; response.end() if request.url == '/favicon.ico'
 
-  if type == 'text/html'
+  if type in files.supportedContentTypes &&
+     request.url.slice(0, static_file_prefx.length) == static_file_prefx
+    # Static file serving, should be done by nginx
+    relative_path = request.url.substring(1, request.url.length)
+    files.getFile relative_path, (file) ->
+      response.writeHead 200, 'Content-Type': file.contentType
+      unless file.encoding == 'binary'
+        response.end file.data
+      else
+        response.end file.data, 'binary'
+  else if type == 'text/html'
     # Html documents
     router.navigate request.url, {'response': response }
-
-  if type == 'application/json'
+  else if type == 'application/json'
     # Api, should be done by a proper api
     if request.url in ['/posts','/posts/']
       db.Post.findAll().success (posts) ->
@@ -36,16 +46,6 @@ server = http.createServer (request, response) ->
 
         response.writeHead 200, 'Content-Type': type
         response.end JSON.stringify posts
-  else if type in files.supportedContentTypes
-    # Static file serving, should be done by nginx
-    if request.url.slice(0, static_file_prefx.length) == static_file_prefx
-      relative_path = request.url.substring(1, request.url.length)
-      files.getFile relative_path, (file) ->
-        response.writeHead 200, 'Content-Type': file.contentType
-        unless file.encoding == 'binary'
-          response.end file.data
-        else
-          response.end file.data, 'binary'
   else
     # Content type not supported
     response.writeHead 415

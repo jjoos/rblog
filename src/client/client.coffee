@@ -3,10 +3,12 @@ $ = require 'jquery'
 View = require '../view'
 Router = require './router'
 Data = require '../data'
+Backbone = require 'backbone'
 
 $(document).ready ->
   router = new Router(Data, View)
 
+  # Route all links through backbone router
   $(document).on "click", "a:not([data-bypass])", (event) ->
     href = $(this).attr 'href'
     root = "#{location.protocol}//#{location.host}/"

@@ -137,7 +137,7 @@ class View
   @renderPost: (data, slug, options) ->
     component = <Post post={data.post(slug)} />
 
-    @renderView(copmonent, options)
+    @renderView(component, options)
 
   @renderArchives: (data, options) ->
     component = <BlogLayout>

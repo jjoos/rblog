@@ -6,7 +6,7 @@ class ServerRouter extends Router
       match = value.regex.exec url
 
       if match
-        [full_match, groups..., rest] = match
-        @[value.callback](options)
+        args = match[1..-1]
+        @[value.callback](args..., options)
 
 module.exports = ServerRouter

@@ -1,16 +1,16 @@
 router = class Router
   routeRegexes: ->
     index:
-      regex: /\//
+      regex: /^\/?$/
       callback: 'showIndex'
     about:
-      regex: /about/
+      regex: /^\/?about$/
       callback: 'showAbout'
     archive:
-      regex: /archives/
+      regex: /^\/?archives$/
       callback: 'showArchives'
     post:
-      regex: /posts\/([A-Za-z0-9\-]+)/
+      regex: /^\/?posts\/([A-Za-z0-9\-]+)$/
       callback: 'showPost'
 
   constructor: (data, view) ->
@@ -18,17 +18,25 @@ router = class Router
     @view = view
 
   showIndex: (options) ->
-    yield @data.updatePosts()
-    @view.renderIndex(@data, options)
+    @data.updatePosts()
+    if @data.posts()?
+      @view.renderIndex(@data, options)
+
+    @data.on 'change', =>
+      @view.renderIndex(@data, options)
 
   showPost: (slug, options) ->
     @data.updatePost(slug)
-    @views.renderPost(@data, slug, options)
+    if @data.post(slug)?
+      @view.renderPost(@data, slug, options)
+
+    @data.on 'change', =>
+      @view.renderPost(@data, slug, options)
 
   showAbout: (options) ->
-    @views.renderAbout()
+    @view.renderAbout()
 
   showArchives: (options) ->
-    @views.renderArchives()
+    @view.renderArchives()
 
 module.exports = Router
