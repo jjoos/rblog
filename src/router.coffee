@@ -1,5 +1,3 @@
-Q = require 'q'
-
 router = class Router
   routeRegexes: ->
     index:
@@ -20,15 +18,12 @@ router = class Router
     @view = view
 
   showIndex: (options) ->
-    Q.spawn =>
-      yield @data.updatePosts()
-      @view.renderIndex(@data, options)
+    yield @data.updatePosts()
+    @view.renderIndex(@data, options)
 
   showPost: (slug, options) ->
-    console.info slug
-    Q.spawn =>
-      yield @data.updatePost(slug)
-      @views.renderPost(@data, slug, options)
+    @data.updatePost(slug)
+    @views.renderPost(@data, slug, options)
 
   showAbout: (options) ->
     @views.renderAbout()

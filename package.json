@@ -29,8 +29,7 @@
     "coffee-react": "0.1.1",
     "coffeelint": "git://github.com/leyyinad/coffeelint-cjsx",
     "grunt-coffeelint": "0.0.13",
-    "nodemon": "1.2.1",
-    "grunt-traceur": "~0.2.9"
+    "nodemon": "1.2.1"
   },
   "dependencies": {
     "backbone": "1.1.2",

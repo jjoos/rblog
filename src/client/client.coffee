@@ -1,5 +1,3 @@
-require 'traceur/bin/traceur-runtime'
-
 $ = require 'jquery'
 
 View = require '../view'

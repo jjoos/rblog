@@ -111,7 +111,7 @@ BlogLayout = React.createClass
         <div id="credits">
           Copyright JJoos
         </div>
-      
+
         <div id="back-top"><a href="#">Back to top</a></div>
       </footer>
     </div>
