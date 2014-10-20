@@ -3,7 +3,7 @@ $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
 
-Data = require '../data'
+Data = require '../data.coffee'
 
 class ClientData extends Data
   _(@).extend Backbone.Events

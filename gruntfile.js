@@ -3,46 +3,40 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     watch: {
-      compile: {
-        files: ['src/*.coffee', 'src/client/*.coffee', 'src/util/*.coffee'],
-        tasks: ['compile']
-      },
-
       lint: {
         files: ['src/**/*.coffee'],
         tasks: ['coffeelint']
       }
     },
 
-    cjsx: {
-      glob_to_multiple: {
-        expand: true,
-        cwd: 'src',
-        src: ['*.coffee', 'client/**/*.coffee','util/**/*.coffee'],
-        dest: 'tmp/es6',
-        ext: '.js'
+    browserify: {
+      all: {
+        src: 'src/client/client.coffee',
+        dest: 'assets/bundle.js',
+        options: {
+          debug: true,
+          transform: ['coffee-reactify', 'es6ify']
+        }
+      },
+
+      watch: {
+        src: 'src/client/client.coffee',
+        dest: 'assets/bundle.js',
+        options: {
+          browserifyOptions: {
+            debug: true
+          },
+          transform: ['coffee-reactify', 'es6ify'],
+          watch: true,
+          keepAlive: true
+        }
       }
     },
 
-    traceur: {
+    concurrent: {
+      watch: ['watch', 'browserify:watch'],
       options: {
-        experimental: true,
-        modules: 'inline'
-      },
-      custom: {
-        files: [{
-          expand: true,
-          cwd: 'tmp/es6',
-          src: ['*.js', 'client/**/*.js', 'util/**/*.js'],
-          dest: 'tmp/es5'
-        }]
-      },
-    },
-
-    browserify: {
-      all: {
-        src: 'tmp/es5/client/client.js',
-        dest: 'assets/bundle.js'
+        logConcurrentOutput: true
       }
     },
 
@@ -51,12 +45,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-coffee-react');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-traceur');
   grunt.loadNpmTasks('grunt-coffeelint');
+  grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('default', ['watch']);
-  grunt.registerTask('compile', ['cjsx', 'traceur' ,'browserify']);
+  grunt.registerTask('default', ['concurrent:watch']);
+  grunt.registerTask('compile', ['browserify']);
 };

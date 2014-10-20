@@ -19,18 +19,18 @@
     "url": "https://github.com/jjoos/rblog/issues"
   },
   "devDependencies": {
-    "grunt-cli": "0.1.13",
+    "coffee-react": "^1.0.3",
+    "coffee-reactify": "^1.0.3",
+    "coffeelint": "git://github.com/jjoos/coffeelint-cjsx",
+    "coffeescript": "git://github.com/jashkenas/coffeescript",
+    "es6ify": "^1.4.0",
     "grunt": "0.4.5",
     "grunt-browserify": "3.0.1",
-    "grunt-contrib-watch": "0.6.1",
-    "grunt-coffee-react": "1.0.1",
-    "react-tools": "0.11.2",
-    "coffeescript": "git://github.com/jashkenas/coffeescript",
-    "coffee-react": "0.1.1",
-    "coffeelint": "git://github.com/leyyinad/coffeelint-cjsx",
+    "grunt-cli": "0.1.13",
     "grunt-coffeelint": "0.0.13",
-    "nodemon": "1.2.1",
-    "grunt-traceur": "~0.2.9"
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-watch": "0.6.1",
+    "nodemon": "1.2.1"
   },
   "dependencies": {
     "backbone": "1.1.2",

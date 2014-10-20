@@ -1,9 +1,9 @@
 $ = require 'jquery'
-
-View = require '../view'
-Router = require './router'
-Data = require './data'
 Backbone = require 'backbone'
+
+View = require '../view.coffee'
+Router = require './router.coffee'
+Data = require './data.coffee'
 
 $(document).ready ->
   router = new Router(Data, View)
