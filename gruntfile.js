@@ -14,7 +14,9 @@ module.exports = function(grunt) {
         src: 'src/client/client.coffee',
         dest: 'assets/bundle.js',
         options: {
-          debug: true,
+          browserifyOptions: {
+            debug: true
+          },
           transform: ['coffee-reactify', 'es6ify']
         }
       },
