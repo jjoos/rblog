@@ -1,9 +1,14 @@
 require './configuration.coffee'
 Sequelize = require 'sequelize'
 
+port = process.env.DATABASE_PORT
+host = process.env.DATABASE_HOST
 sequelize =
-  new Sequelize "postgres://#{process.env.DATABASE_HOST}:"+
-    "#{process.env.DATABASE_PORT}/rblog_development"
+  new Sequelize 'rblog_development', '', '',
+    host: host
+    port: port
+    logging: false
+    dialect: 'postgres'
 
 sequelize
   .authenticate()
