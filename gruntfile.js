@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     watch: {
       compile: {
-        files: ['src/*.coffee'],
+        files: ['src/*.coffee', 'src/client/*.coffee'],
         tasks: ['compile']
       },
 
@@ -12,15 +12,13 @@ module.exports = function(grunt) {
         files: ['src/**/*.coffee'],
         tasks: ['coffeelint']
       }
-
     },
 
     cjsx: {
       glob_to_multiple: {
         expand: true,
-        flatten: false,
         cwd: 'src',
-        src: ['*.coffee'],
+        src: ['*.coffee', 'client/**/*.coffee'],
         dest: 'tmp/es6',
         ext: '.js'
       }
@@ -35,7 +33,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'tmp/es6',
-          src: '**/*.js',
+          src: ['*.js', 'client/**/*.js'],
           dest: 'tmp/es5'
         }]
       },
@@ -43,7 +41,7 @@ module.exports = function(grunt) {
 
     browserify: {
       all: {
-        src: 'tmp/es5/client.js',
+        src: 'tmp/es5/client/client.js',
         dest: 'assets/bundle.js'
       }
     },

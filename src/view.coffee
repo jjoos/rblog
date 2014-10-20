@@ -128,5 +128,24 @@ Index = React.createClass
       { @posts() }
     </BlogLayout>
 
-module.exports.Index = Index
-module.exports.Post = Post
+class View
+  @renderIndex: (data, options) ->
+    component = <Index posts={data.posts()} />
+
+    @renderView(component, options)
+
+  @renderPost: (data, slug, options) ->
+    component = <Post post={data.post(slug)} />
+
+    @renderView(copmonent, options)
+
+  @renderArchives: (data, options) ->
+    component = <BlogLayout>
+        Archive
+      </BlogLayout>
+    @renderView(component, options)
+
+  @renderView: (component, options) ->
+    React.renderComponent component, window.document.body
+
+module.exports = View

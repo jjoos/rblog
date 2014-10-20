@@ -1,19 +1,21 @@
 http = require 'http'
 React = require 'react'
-views = require './views'
-files = require './server/files'
-db = require './server/database.coffee'
 Negotiator = require 'negotiator'
-global.task = require 'taskjs'
-Q = require 'q'
+
+View = require './view.coffee'
+files = require './files.coffee'
+Data = require './data.coffee'
+Router = require './router.coffee'
 
 _ = require 'underscore'
-require './server/configuration.coffee'
+require './configuration.coffee'
 
 static_file_prefx = '/assets'
 
 availableMediaTypes =
   ['text/html', 'application/json'].concat files.supportedContentTypes
+
+router = new Router Data, View
 
 server = http.createServer (request, response) ->
   negotiator = new Negotiator request
@@ -23,27 +25,7 @@ server = http.createServer (request, response) ->
 
   if type == 'text/html'
     # Html documents
-    files.getFile 'assets/template.html', (template) ->
-      appHtml = ''
-      if request.url == '/'
-        Q.spawn ->
-          posts = yield db.Post.findAll()
-
-          posts = _(posts).map (post) ->
-            post.dataValues
-
-          appHtml = React.renderComponentToString views.Index(posts: posts)
-          appHtml = template.data.replace '<body />', "<body>#{appHtml}</body>"
-          response.writeHead 200, 'Content-Type': type
-          response.end appHtml
-      else
-        match = /posts\/([A-Za-z0-9\-]+)/.exec request.url
-        if match
-          db.Post.find(where: {'slug': match[1]}).success (post) ->
-            appHtml = React.renderComponentToString views.Post(post: post)
-            appHtml = template.data.replace '<body />',"<body>#{appHtml}</body>"
-            response.writeHead 200, 'Content-Type': type
-            response.end appHtml
+    router.navigate request.url, {'response': response }
 
   if type == 'application/json'
     # Api, should be done by a proper api
