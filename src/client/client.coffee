@@ -8,8 +8,6 @@ Backbone = require 'backbone'
 $(document).ready ->
   router = new Router(Data, View)
 
-  console.info Data
-
   Backbone.history.start pushState: true
 
   # Route all links through backbone router
