@@ -1,22 +1,33 @@
-require './router'
 _ = require 'underscore'
 $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
 
-class ClientRouter extends Backbone.Router
-  constructor: ->
-    _.extend @, Router
+Router = require '../router'
+VirtualClass = require '../util/virtual-class'
 
+class ClientRouter extends VirtualClass Backbone.Router, Router
+  constructor: (data, view) ->
     @initializeRoutes()
 
     super
 
-    Backbone.history.start pushState: true
-    console.info 'started routing'
+  execute: (callback, args) ->
+    # stop listening on the old route for changes in the data
+    @data.off 'change'
+    callback.apply @, args if callback?
 
   initializeRoutes: ->
-    for key, route of @routeRegexes
-      @route route.regex, route.callback
+    for key, regex of @routeRegexes()
+      @route regex, key
+
+  wrapper: (update, render) ->
+    if update?
+      update()
+
+      @data.on 'change', ->
+        render()
+    else
+      render()
 
 module.exports = ClientRouter

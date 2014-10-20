@@ -137,11 +137,17 @@ class View
   @renderPost: (data, slug, options) ->
     component = <Post post={data.post(slug)} />
 
-    @renderView(copmonent, options)
+    @renderView(component, options)
 
-  @renderArchives: (data, options) ->
+  @renderArchive: (data, options) ->
     component = <BlogLayout>
         Archive
+      </BlogLayout>
+    @renderView(component, options)
+
+  @renderAbout: (data, options) ->
+    component = <BlogLayout>
+        About
       </BlogLayout>
     @renderView(component, options)
 

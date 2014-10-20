@@ -46,7 +46,7 @@ readFile = (path, callback) ->
   # TODO sanitize path so it cannot escape some public folder
   fs.readFile path, encoding: type.encoding, (error, data) ->
     return console.log error if error
-    #console.info "data: #{data}" if type.encoding == 'binary'
+
     callback { data: data, contentType: type.type, encoding: type.encoding }
 
 cacheFile = (path, file) ->

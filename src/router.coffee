@@ -1,38 +1,30 @@
-Q = require 'q'
-
 router = class Router
   routeRegexes: ->
-    index:
-      regex: /\//
-      callback: 'showIndex'
-    about:
-      regex: /about/
-      callback: 'showAbout'
-    archive:
-      regex: /archives/
-      callback: 'showArchives'
-    post:
-      regex: /posts\/([A-Za-z0-9\-]+)/
-      callback: 'showPost'
+    index: /^\/?$/
+    about: /^\/?about$/
+    archive: /^\/?archives$/
+    post: /^\/?posts\/([A-Za-z0-9\-]+)$/
 
   constructor: (data, view) ->
     @data = data
     @view = view
 
-  showIndex: (options) ->
-    Q.spawn =>
-      yield @data.updatePosts()
-      @view.renderIndex(@data, options)
+  index: (options) ->
+    update = => @data.updatePosts()
+    render = => @view.renderIndex(@data, options)
 
-  showPost: (slug, options) ->
-    Q.spawn =>
-      @data.updatePost(slug)
-      @views.renderPost(@data, slug, options)
+    @wrapper update, render
 
-  showAbout: (options) ->
-    @views.renderAbout()
+  post: (slug, options) ->
+    update = => @data.updatePost(slug)
+    render = => @view.renderPost(@data, slug, options)
+    
+    @wrapper update, render
 
-  showArchives: (options) ->
-    @views.renderArchives()
+  about: (options) ->
+    @wrapper null, => @view.renderAbout(@data, options)
+
+  archive: (options) ->
+    @wrapper null, => @view.renderArchive(@data, options)
 
 module.exports = Router

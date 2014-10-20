@@ -6,15 +6,9 @@ class ServerData extends Data
     db.Post.findAll().then (posts) =>
       @_posts = (post.dataValues for post in posts)
 
-  @updatePost: =>
+  @updatePost: (slug) =>
+    @_posts ||= {}
     db.Post.find(where: {'slug': slug}).then (post) =>
       @_posts[slug] = post
-
-  # TODO: rewrite with promises or SYNC
-  @posts: ->
-    @_posts
-
-  @post: (slug) ->
-    @_posts[slug]
 
 module.exports = ServerData

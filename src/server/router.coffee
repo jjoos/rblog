@@ -1,12 +1,18 @@
 Router = require '../router.coffee'
+Q = require 'q'
 
 class ServerRouter extends Router
   navigate: (url, options) ->
-    for key, value of @routeRegexes()
-      match = value.regex.exec url
+    for route, regex of @routeRegexes()
+      match = regex.exec url
 
       if match
-        [full_match, groups..., rest] = match
-        @[value.callback](options)
+        args = match[1..-1]
+        @[route](args..., options)
+
+  wrapper: (update, render) ->
+    Q.spawn ->
+      yield update() if update?
+      render()
 
 module.exports = ServerRouter
