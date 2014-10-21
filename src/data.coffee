@@ -1,8 +1,8 @@
 class Data
-  @post: (slug) ->
+  post: (slug) ->
     @_posts[slug]
 
-  @posts: ->
+  posts: ->
     @_posts
 
 module.exports = Data

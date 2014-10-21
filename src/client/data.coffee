@@ -6,9 +6,10 @@ Backbone.$ = $
 Data = require '../data.coffee'
 
 class ClientData extends Data
-  _(@).extend Backbone.Events
+  constructor: ->
+    _(@).extend Backbone.Events
 
-  @updatePosts: =>
+  updatePosts: =>
     $.ajax
       dataType: "json",
       url: '/posts',
@@ -16,7 +17,7 @@ class ClientData extends Data
         @_posts = data
         @trigger 'change'
 
-  @updatePost: (slug) =>
+  updatePost: (slug) =>
     @_posts ||= {}
     $.ajax
       dataType: "json",

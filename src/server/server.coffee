@@ -17,9 +17,8 @@ static_file_prefx = '/assets'
 availableMediaTypes =
   ['text/html', 'application/json'].concat files.supportedContentTypes
 
-router = new Router Data, View
-
 server = http.createServer (request, response) ->
+  data = new Data
   negotiator = new Negotiator request
   type = negotiator.mediaType availableMediaTypes
   # 404 on favicon
@@ -37,22 +36,22 @@ server = http.createServer (request, response) ->
         response.end file.data, 'binary'
   else if type == 'text/html'
     # Html documents
+    router = new Router data, View
     router.navigate request.url, {'response': response }
   else if type == 'application/json'
     # Api, should be done by a proper api
     if request.url in ['/posts', '/posts/']
-      db.Post.findAll().success (posts) ->
-        posts = _(posts).map (post) ->
-          post.dataValues
+      Q.spawn ->
+        yield data.updatePosts()
 
         response.writeHead 200, 'Content-Type': type
-        response.end JSON.stringify posts
+        response.end JSON.stringify data.posts()
     else if match = /\/posts\/([a-zA-Z0-9\-]+)/.exec request.url
       Q.spawn ->
         slug = match[1]
-        yield Data.updatePost slug
+        yield data.updatePost slug
         response.writeHead 200, 'Content-Type': type
-        response.end JSON.stringify Data.post slug
+        response.end JSON.stringify data.post slug
   else
     # Content type not supported
     response.writeHead 415

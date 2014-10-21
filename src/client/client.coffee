@@ -6,7 +6,7 @@ Router = require './router.coffee'
 Data = require './data.coffee'
 
 $(document).ready ->
-  router = new Router(Data, View)
+  router = new Router(new Data, View)
 
   Backbone.history.start pushState: true
 
