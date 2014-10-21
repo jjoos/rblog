@@ -1,12 +1,13 @@
 class Data
-  @post: (slug) ->
-    @_posts[slug]
+  post: (slug) ->
+    for _, post of @_posts
+      console.info post.slug, slug
+      return post if post.slug == slug
 
-  @posts: ->
-    @_posts
+  posts: ->
+    post for _, post of @_posts
 
-  @commentsForPost: (slug) ->
-    _(@_posts[slug]['comments']).map (comment_id) ->
-      @_comments[id]
+  commentsForSlug: (slug) ->
+    @_posts[slug]['comments']
 
 module.exports = Data

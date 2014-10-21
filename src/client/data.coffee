@@ -7,30 +7,37 @@ Q = require 'q'
 Data = require '../data.coffee'
 
 class ClientData extends Data
-  _(@).extend Backbone.Events
+  constructor: ->
+    _(@).extend Backbone.Events
 
-  @updatePosts: =>
-    $.ajax
-      dataType: "json",
-      url: '/posts',
-      success: (data) =>
-        @_posts = data
-        @trigger 'change'
+  updatePosts: ->
+    async = Q.async =>
+      @_posts = yield $.ajax
+        dataType: "json",
+        url: '/posts'
+      
+      @trigger 'change'
 
-  @updatePost: (slug) ->
-    Q.spawn ->
+    async()
+
+  updatePost: (slug) ->
+    async = Q.async =>
       @_posts ||= {}
-      @_posts[slug] = yield $.ajax
+      post = $.ajax
         dataType: "json",
-        url: "/posts/#{slug}",
+        url: "/posts/#{slug}"
 
-      @_posts[slug]['comments'] = yield $.ajax
+      @_posts[post.id] = post
+
+      @_posts[post.id]['comments'] = yield $.ajax
         dataType: "json",
-        url: "/posts/#{slug}/comments",
+        url: "/posts/#{slug}/comments"
 
-      _(@_posts[slug]['comments']).each (comment) ->
+      for comment in @_posts[post.id]['comments']
         @_comments[comment.id] = comment
 
       @trigger 'change'
+
+    async()
 
 module.exports = ClientData

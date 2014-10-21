@@ -13,6 +13,7 @@ class ServerRouter extends Router
   wrapper: (update, render) ->
     Q.spawn ->
       yield update() if update?
+
       render()
 
 module.exports = ServerRouter

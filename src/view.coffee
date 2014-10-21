@@ -5,12 +5,10 @@ Post = React.createClass
   displayName: 'Post'
 
   render: ->
-    <BlogLayout>
-      <article>
-        <h2>{ @props.post.title }</h2>
-        <p>{ @props.post.body }</p>
-      </article>
-    </BlogLayout>
+    <article>
+      <h2>{ @props.post.title }</h2>
+      <p>{ @props.post.body }</p>
+    </article>
 
 Summary = React.createClass
   displayName: 'Summary'
@@ -124,18 +122,23 @@ Index = React.createClass
       <Summary post={post} key={post.slug} />
 
   render: ->
-    <BlogLayout>
+    <div>
       { @posts() }
-    </BlogLayout>
+    </div>
 
 class View
   @renderIndex: (data, options) ->
-    component = <Index posts={data.posts()} />
+    component = <BlogLayout>
+        <Index posts={data.posts()} />
+      </BlogLayout>
 
     @renderView(component, options)
 
   @renderPost: (data, slug, options) ->
-    component = <Post post={data.post(slug)} />
+    component = <BlogLayout>
+        <Post post={data.post(slug)} />
+        <Comments comments={data.commentsForSlug(slug)} />
+      </BlogLayout>
 
     @renderView(component, options)
 
@@ -143,12 +146,14 @@ class View
     component = <BlogLayout>
         Archive
       </BlogLayout>
+
     @renderView(component, options)
 
   @renderAbout: (data, options) ->
     component = <BlogLayout>
         About
       </BlogLayout>
+
     @renderView(component, options)
 
   @renderView: (component, options) ->

@@ -17,9 +17,8 @@ static_file_prefx = '/assets'
 availableMediaTypes =
   ['text/html', 'application/json'].concat files.supportedContentTypes
 
-router = new Router Data, View
-
 server = http.createServer (request, response) ->
+  data = new Data
   negotiator = new Negotiator request
   type = negotiator.mediaType availableMediaTypes
   # 404 on favicon
@@ -37,6 +36,7 @@ server = http.createServer (request, response) ->
         response.end file.data, 'binary'
   else if type == 'text/html'
     # Html documents
+    router = new Router data, View
     router.navigate request.url, {'response': response }
   else if type == 'application/json'
     # Api, should be done by a proper api
@@ -46,20 +46,20 @@ server = http.createServer (request, response) ->
 
         response.writeHead 200, 'Content-Type': type
         response.end JSON.stringify Data.posts
-    else if match = /\/posts\/([a-zA-Z0-9\-]+)/.exec request.url
+    else if match = /^\/posts\/([a-zA-Z0-9\-]+)$/.exec request.url
       Q.spawn ->
         slug = match[1]
         yield Data.updatePost slug
 
         response.writeHead 200, 'Content-Type': type
         response.end JSON.stringify Data.post slug
-    else if match = /\/posts\/([a-zA-Z0-9\-]+)\/comments/.exec request.url
+    else if match = /^\/posts\/([a-zA-Z0-9\-]+)\/comments$/.exec request.url
       Q.spawn ->
         slug = match[1]
         yield Data.updatePost slug
 
         response.writeHead 200, 'Content-Type': type
-        response.end JSON.stringify Data.commentsForPost slug
+        response.end JSON.stringify Data.commentsForSlug slug
   else
     # Content type not supported
     response.writeHead 415
