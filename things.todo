@@ -7,3 +7,72 @@ Styling:
   ☐ Add scss pipeline
 http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
 http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
+
+Isomorphic javascript website with ReactJS
+
+Open discussion about different approaches to improve our frontend architecture, topics:
+- flux
+- backbone
+- routing
+- server side rendering
+
+**Reading list**
+flux:
+http://facebook.github.io/flux/docs/overview.html
+http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html
+http://www.infoq.com/news/2014/05/facebook-mvc-flux
+https://github.com/facebook/flux
+https://github.com/yahoo/dispatchr
+http://fluxxor.com/
+https://github.com/dustingetz/react-cursor/
+https://github.com/mquan/cortex
+
+routing:
+https://github.com/yahoo/routr
+https://github.com/rackt/react-router
+http://backbonejs.org/#Router
+http://enome.github.io/javascript/2014/05/09/lets-create-our-own-router-component-with-react-js.html
+http://jilles.me/express-routing-the-beginners-guide/ (express router)
+
+blogs and other comments:
+http://www.techsonian.net/2014/09/from-backbone-to-react-our-experience-scaling-a-web-application/
+http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome
+http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/
+http://www.toptal.com/front-end/simple-data-flow-in-react-applications-using-flux-and-backbone
+https://medium.com/@garychambers108/flux-in-practice-ec08daa9041a
+http://blogs.atlassian.com/2014/08/flux-architecture-step-by-step/
+http://spoike.ghost.io/deconstructing-reactjss-flux/
+https://news.ycombinator.com/item?id=8355255
+https://news.ycombinator.com/item?id=8097776
+https://news.ycombinator.com/item?id=7719957
+
+Isomorphic websites:
+https://javascriptkicks.com/
+http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/
+http://www.slideshare.net/spikebrehm/2014-0313fluent
+
+Realtime:
+http://swarmjs.github.io/articles/todomvc/
+https://github.com/gritzko/swarm
+
+appendix:
+http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html (original mvc paper)
+
+http://www.code-experience.com/avoiding-event-chains-in-single-page-applications/
+
+http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html :
+- https://www.youtube.com/watch?v=i__969noyAM#t=206
+- https://github.com/yahoo/flux-router-component
+- https://github.com/yahoo/fetchr
+- https://github.com/yahoo/flux-examples
+- https://github.com/spoike/refluxjs
+- http://spoike.ghost.io/deconstructing-reactjss-flux/
+- http://ianobermiller.com/blog/2014/09/15/react-and-flux-interview/
+- http://www.kevindangoor.com/2014/09/intro-to-the-new-brackets-project-tree/
+- http://www.code-experience.com/async-requests-with-react-js-and-flux-revisited/
+- http://ameyakarve.com/jekyll/update/2014/02/06/Undo-React-Flux-Mori.html
+- https://medium.com/@garychambers108/flux-in-practice-ec08daa9041a
+- http://christianalfoni.github.io/javascript/2014/08/20/react-js-and-flux.html
+- http://blogs.atlassian.com/2014/08/flux-architecture-step-by-step/
+- https://github.com/deloreanjs/delorean
+- https://www.youtube.com/watch?v=XhXC4SKOGfQ
