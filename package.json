@@ -46,6 +46,7 @@
     "traceur": "0.0.61"
   },
   "scripts": {
+    "db:setup": "bin/db_setup",
     "start": "bin/start",
     "preinstall": "bin/preinstall",
     "postinstall": "bin/postinstall"
