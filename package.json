@@ -21,7 +21,7 @@
   "devDependencies": {
     "coffee-react": "^1.0.3",
     "coffee-reactify": "^1.0.3",
-    "coffeelint": "git://github.com/jjoos/coffeelint-cjsx",
+    "coffeelint": "git://github.com/jjoos/coffeelint-cjsx#with-trunk-coffeescript",
     "coffeescript": "git://github.com/jashkenas/coffeescript",
     "es6ify": "git://github.com/thlorenz/es6ify",
     "grunt": "0.4.5",

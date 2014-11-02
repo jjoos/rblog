@@ -43,7 +43,10 @@ module.exports = function(grunt) {
     },
 
     coffeelint: {
-      app: ['src/**/*.coffee']
+      app: ['src/**/*.coffee'],
+      options: {
+        configFile: 'coffeelint.json'
+      }
     }
   });
 
