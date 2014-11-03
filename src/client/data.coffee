@@ -11,33 +11,30 @@ class ClientData extends Data
     _(@).extend Backbone.Events
 
   updatePosts: ->
-    async = Q.async =>
-      @_posts = yield $.ajax
+    Q.spawn =>
+      @_posts = yield Q $.ajax
         dataType: "json",
         url: '/posts'
-      
+
       @trigger 'change'
 
-    async()
-
   updatePost: (slug) ->
-    async = Q.async =>
-      @_posts ||= {}
-      post = $.ajax
+    Q.spawn =>
+      getPost = Q $.ajax
         dataType: "json",
         url: "/posts/#{slug}"
 
-      @_posts[post.id] = post
-
-      @_posts[post.id]['comments'] = yield $.ajax
+      getComments = Q $.ajax
         dataType: "json",
         url: "/posts/#{slug}/comments"
 
-      for comment in @_posts[post.id]['comments']
+      @_posts ||= {}
+      @_posts[slug] = yield getPost
+
+      @_posts[slug]['comments'] = yield getComments
+      for comment in @_posts[slug]['comments']
+        @_comments ||= {}
         @_comments[comment.id] = comment
-
       @trigger 'change'
-
-    async()
 
 module.exports = ClientData

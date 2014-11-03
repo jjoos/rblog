@@ -217,6 +217,34 @@ Index = React.createClass
       {@posts()}
     </div>
 
+Comment = React.createClass
+  displayName: 'Comment'
+
+  render: ->
+    <div>
+      <div>
+        <span>Author: {@props.comment.author}</span>
+        <span>Created at: {@props.comment.createdAt}</span>
+      </div>
+      <div>
+        {@props.comment.body}
+      </div>
+    </div>
+
+Comments = React.createClass
+  displayName: 'Comments'
+
+  comments: ->
+    for comment in @props.comments
+      <Comment
+        comment={comment}
+        key={comment.id} />
+
+  render: ->
+    <div>
+      {@comments()}
+    </div>
+
 class View
   @renderIndex: (data, options) ->
     component = <BlogLayout>

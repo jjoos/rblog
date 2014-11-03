@@ -5,17 +5,6 @@ db = require '../src/server/database.coffee'
 db.Comment.sequelize.sync
 Q.spawn ->
   yield db.Post.sequelize.sync force: true
-
-  comment1 = db.Comment
-    .create
-      author: 'Ayende Rahien'
-      body: 'Made me think that it was my code that was throwing this.'
-
-  comment2 = db.Comment
-    .create
-      author: 'Ayende Rahien'
-      body: 'Made me think that it was my code that was throwing this.'
-
   post1 = yield db.Post.create
     slug: 'mono-frustrations'
     title: 'Mono frustrations'
@@ -35,7 +24,6 @@ Q.spawn ->
           {
               class MainClass
               {
-
                   public static void Main (string[] args)
                   {
                       new ZipArchive (new MemoryStream ());
@@ -53,6 +41,20 @@ Q.spawn ->
                   at HelloWorld.MainClass.Main (System.String[] args) [0x00006] in /home/ayende/HelloWorld/HelloWorld/Program.cs:11
 
           This is annoying in that it isn’t implemented, but worse from my point of view is that I don’t see any ZipArchive in the stack trace. That made me think that it was my code that was throwing this."""
+
+  comment1 = yield db.Comment
+    .create
+      author: 'Jan Deelstra'
+      body: 'Brainfart.'
+      succes: ->
+
+  comment2 = yield db.Comment
+    .create
+      author: 'Ayende Rahien'
+      body: 'Made me think that it was my code that was throwing this.'
+
+  #comment1.addPost(post1)
+  post1.setComments([comment1, comment2])
 
   db.Post
     .create

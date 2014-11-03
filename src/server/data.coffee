@@ -5,7 +5,8 @@ Q = require 'q'
 class ServerData extends Data
   updatePosts: ->
     async = Q.async =>
-      posts = db.Post.findAll()
+      @_posts ||= {}
+      posts = yield db.Post.findAll()
       for post in posts
         post = post.dataValues
         @_posts[post.id] = post
@@ -17,15 +18,17 @@ class ServerData extends Data
       @_posts ||= {}
       post = yield db.Post.find where: {'slug': slug}
       post = post.dataValues
-      @_posts[post.id] = post
-      @_posts[post.id]['comments'] = yield db.Comment.find
-        where: {'PostId': post.id}
+      @_posts[slug] = post
+      @_posts[slug]['comments'] = []
+      comments = yield db.Comment.where('PostId': post.id).exec()
+      comments ||= []
 
-      if @_posts[post.id]['comments']?
-        for comment in @_posts[post.id]['comments']
-          @_comments ||= {}
-          @_comments[comment.id] = comment
-    
+      @_posts[slug]['comments'] = comments.map (comment) -> comment.dataValues
+
+      for comment in @_posts[slug]['comments']
+        @_comments ||= {}
+        @_comments[comment.id] = comment
+
     async()
 
 module.exports = ServerData

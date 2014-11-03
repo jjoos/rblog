@@ -1,7 +1,6 @@
 class Data
   post: (slug) ->
     for _, post of @_posts
-      console.info post.slug, slug
       return post if post.slug == slug
 
   posts: ->
