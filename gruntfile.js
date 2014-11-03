@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           browserifyOptions: {
             debug: true
           },
-          transform: ['coffee-reactify', 'es6ify']
+          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']]
         }
       },
 
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           browserifyOptions: {
             debug: true
           },
-          transform: ['coffee-reactify', 'es6ify'],
+          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/ }, 'es6ify']],
           watch: true,
           keepAlive: true
         }
@@ -43,7 +43,10 @@ module.exports = function(grunt) {
     },
 
     coffeelint: {
-      app: ['src/**/*.coffee']
+      app: ['src/**/*.coffee'],
+      options: {
+        configFile: 'coffeelint.json'
+      }
     }
   });
 

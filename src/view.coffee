@@ -6,8 +6,8 @@ Post = React.createClass
 
   render: ->
     <article>
-      <h2>{ @props.post.title }</h2>
-      <p>{ @props.post.body }</p>
+      <h2>{@props.post.title}</h2>
+      <p>{@props.post.body}</p>
     </article>
 
 Summary = React.createClass
@@ -15,14 +15,24 @@ Summary = React.createClass
 
   render: ->
     <article>
-      <a href={ "/posts/#{@props.post.slug}" }>
-        <h2>{ @props.post.title }</h2>
+      <a href={"/posts/#{@props.post.slug}"}>
+        <h2>{@props.post.title}</h2>
       </a>
-      <p>{ @props.post.body.substring(0,10) }...</p>
+      <p>{@props.post.body.substring(0,10)}...</p>
       <footer className="postinfo">
         <li>17th October 2011</li>
-        <li>Posted in <a href="#">Articles</a></li>
-        <li><a href={ @props.post.link}>Continue Reading »</a></li>
+        <li>
+          Posted in
+          <a href="#">
+            Articles
+          </a>
+        </li>
+        <li>
+          <a
+            href={@props.post.link}>
+            Continue Reading »
+          </a>
+        </li>
       </footer>
     </article>
 
@@ -30,9 +40,9 @@ SidebarSection = React.createClass
   displayName: 'SidebarSection'
 
   render: ->
-    <section id={ @props.id }>
-      <h3>{ @props.title }</h3>
-      { @props.children }
+    <section id={@props.id}>
+      <h3>{@props.title}</h3>
+      {@props.children}
     </section>
 
 BlogLayout = React.createClass
@@ -52,43 +62,118 @@ BlogLayout = React.createClass
 
   sidebar: ->
     <aside>
-      <SidebarSection id="about" titl="About me">
-        <p>Typo is a WordPress theme based entirely on a balanced typographic
+      <SidebarSection
+        id="about"
+        title="About me">
+        <p>
+          Typo is a WordPress theme based entirely on a balanced typographic
       design. A strict grid layout keeps everything tidy, allowing the
       content to shine.
-          <a href="/about" className="more">Find out more »</a>
+          <a href="/about" className="more">
+            Find out more »
+          </a>
         </p>
       </SidebarSection>
-      <SidebarSection id="categories" title="Categories">
+      <SidebarSection
+        id="categories"
+        title="Categories">
         <ul>
-          <li><a href="#">Articles</a></li>
-          <li><a href="#">Design</a></li>
-          <li><a href="#">Graphics</a></li>
-          <li><a href="#">Inspiration</a></li>
-          <li><a href="#">Retro</a></li>
+          <li>
+            <a href="#">
+              Articles
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Design
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Graphics
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Inspiration
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Retro
+            </a>
+          </li>
         </ul>
       </SidebarSection>
-      <SidebarSection id="social" title="Social">
+      <SidebarSection
+        id="social"
+        title="Social">
         <ul>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Flickr</a></li>
-          <li><a href="#">Behance</a></li>
-          <li><a href="#">Last.FM</a></li>
-          <li><a href="#">YouTube</a></li>
+          <li>
+            <a href="#">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Flickr
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Behance
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Last.FM
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              YouTube
+            </a>
+          </li>
         </ul>
       </SidebarSection>
-      <SidebarSection id="latest" title="Latest posts">
+      <SidebarSection
+        id="latest"
+        title="Latest posts">
         <ul>
-          <li><a href="#">Getting your stock photos seen</a></li>
-          <li><a href="#">Top 10 tips for new bloggers</a></li>
-          <li><a href="#">10 fantastic photography tips</a></li>
+          <li>
+            <a href="#">
+              Getting your stock photos seen
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Top 10 tips for new bloggers
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              10 fantastic photography tips
+            </a>
+          </li>
         </ul>
       </SidebarSection>
-      <SidebarSection id="search" title="Search">
+      <SidebarSection
+        id="search"
+        title="Search">
         <fieldset>
-          <input type="text" id="searchbar" placeholder="I'm looking for..." />
-          <input type="submit" id="searchsubmit" value="Search" />
+          <input
+            type="text"
+            id="searchbar"
+            placeholder="I'm looking for..." />
+          <input
+            type="submit"
+            id="searchsubmit"
+            value="Search" />
         </fieldset>
       </SidebarSection>
     </aside>
@@ -99,18 +184,22 @@ BlogLayout = React.createClass
         <a href="/">
           <h1>JJoos</h1>
         </a>
-        { @menu() }
+        {@menu()}
       </header>
       <main>
-        { @props.children }
+        {@props.children}
       </main>
-      { @sidebar() }
+      {@sidebar()}
       <footer>
         <div id="credits">
           Copyright JJoos
         </div>
 
-        <div id="back-top"><a href="#">Back to top</a></div>
+        <div id="back-top">
+          <a href="#">
+            Back to top
+          </a>
+        </div>
       </footer>
     </div>
 
@@ -119,11 +208,13 @@ Index = React.createClass
 
   posts: ->
     for post in @props.posts
-      <Summary post={post} key={post.slug} />
+      <Summary
+        post={post}
+        key={post.slug} />
 
   render: ->
     <div>
-      { @posts() }
+      {@posts()}
     </div>
 
 class View

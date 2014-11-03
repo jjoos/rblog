@@ -5,16 +5,15 @@ function echoStep {
   echo $'\033[0m'
 }
 
-echoStep "Starting postgres."
-
 if [[ ! -d ./tmp/postgres ]]; then
-  echoStep "Creating a data folder for postgres."
+  echoStep "Creating a data folder for postgres"
   initdb './tmp/postgres' -E utf8 --locale en_US
 
-  echoStep "Starting postgres."
+  echoStep "Starting postgres"
 
   postgres -D 'tmp/postgres' -k . -p 3910 -h localhost &
   POSTGRES_PID=$!
+  sleep 2
 
   echoStep "Dropping database"
   dropdb -p 3910 -h localhost rblog_development

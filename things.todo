@@ -1,10 +1,14 @@
 Database:
   ☐ Implement models
+  ☐ Investigate moving all to firebase
 Static assets:
   ☐ Run nginx in the long run, stupid to server statics with node
   ☐ Serve images
 Styling:
   ☐ Add scss pipeline
+Views:
+  ☐ Move views to seperate files
+
 http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
 http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
 
