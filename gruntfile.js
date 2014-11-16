@@ -28,10 +28,9 @@ module.exports = function(grunt) {
           browserifyOptions: {
             debug: true
           },
-          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/ }, 'es6ify']],
+          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']],
           watch: true,
-          keepAlive: true,
-          debug: true
+          keepAlive: true
         }
       }
     },

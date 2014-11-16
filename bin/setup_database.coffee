@@ -1,5 +1,5 @@
 Q = require 'q'
-db = require '../database.coffee'
+db = require '../src/api/database.coffee'
 
 db.Comment.sequelize.sync
 Q.spawn ->
@@ -75,7 +75,7 @@ Q.spawn ->
                    public int Number { get; set; }
                    public List<Apartment> Apartments { get; set; }
                }
-          
+
                public class Apartment
                {
                    public string ApartmentNumber { get; set; }
