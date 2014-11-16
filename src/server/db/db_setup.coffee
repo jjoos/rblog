@@ -1,6 +1,5 @@
-#!/usr/bin/env cjsx --nodejs --harmony
-Q = require 'Q'
-db = require '../src/server/database.coffee'
+Q = require 'q'
+db = require '../database.coffee'
 
 db.Comment.sequelize.sync
 Q.spawn ->

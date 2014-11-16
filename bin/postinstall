@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -x
+set -e
+
 function echoStep {
   printf $'\e[37;44m\033[1m'"$1"
   echo $'\033[0m'
@@ -15,13 +18,12 @@ if [[ ! -d ./tmp/postgres ]]; then
   POSTGRES_PID=$!
   sleep 2
 
-  echoStep "Dropping database"
-  dropdb -p 3910 -h localhost rblog_development
-
   echoStep "Creating database"
   createdb -p 3910 -h localhost rblog_development
 
-  ./bin/db_setup
+  pwd
+
+  npm run setup_database
 
   echoStep "Killed postgres and waiting two seconds for postgresql shutdown."
   kill $POSTGRES_PID

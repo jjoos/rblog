@@ -46,7 +46,7 @@
     "traceur": "0.0.61"
   },
   "scripts": {
-    "db:setup": "cjsx --nodejs --harmony bin/db_setup",
+    "setup_database": "coffee --nodejs --harmony src/server/db/db_setup.coffee",
     "start": "bin/start",
     "preinstall": "bin/preinstall",
     "postinstall": "bin/postinstall"
