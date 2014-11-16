@@ -39,14 +39,17 @@
     "negotiator": "~0.4.8",
     "pg": "3.5.0",
     "q": "^1.0.1",
+    "q-superagent": "^1.0.1",
     "react": "0.11.2",
     "sequelize": "~2.0.0-rc1",
     "sequelize-cli": "~0.3.3",
+    "superagent": "^0.21.0",
+    "traceur": "0.0.61",
     "underscore": "1.7.0",
-    "traceur": "0.0.61"
+    "wolfy87-eventemitter": "^4.2.9"
   },
   "scripts": {
-    "setup_database": "coffee --nodejs --harmony src/server/db/db_setup.coffee",
+    "setup_database": "coffee --nodejs --harmony src/api/database/setup.coffee",
     "start": "bin/start",
     "preinstall": "bin/preinstall",
     "postinstall": "bin/postinstall"

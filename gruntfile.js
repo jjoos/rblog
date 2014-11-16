@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 
     browserify: {
       all: {
-        src: 'src/client/client.coffee',
-        dest: 'assets/bundle.js',
+        src: 'src/client/application.coffee',
+        dest: 'assets/client.js',
         options: {
           browserifyOptions: {
             debug: true
@@ -22,15 +22,16 @@ module.exports = function(grunt) {
       },
 
       watch: {
-        src: 'src/client/client.coffee',
-        dest: 'assets/bundle.js',
+        src: 'src/client/application.coffee',
+        dest: 'assets/client.js',
         options: {
           browserifyOptions: {
             debug: true
           },
           transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/ }, 'es6ify']],
           watch: true,
-          keepAlive: true
+          keepAlive: true,
+          debug: true
         }
       }
     },

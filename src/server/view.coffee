@@ -1,7 +1,9 @@
 # @jsx React.DOM
 React = require 'react'
+
+files = require '../util/files.coffee'
+
 View = require '../view.coffee'
-files = require './files.coffee'
 
 class ServerView extends View
   @renderView: (component, options) ->

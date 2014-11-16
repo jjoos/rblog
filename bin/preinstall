@@ -19,6 +19,8 @@ if [[ ! -e .env ]]; then
   echoStep "Creating a dot env file."
   cat <<"DOTENVFILE" > .env
 WEB_PORT=3900
+API_PORT=3901
+ASSETS_PORT=3902
 DATABASE_PORT=3910
 DATABASE_HOST=localhost
 DOTENVFILE

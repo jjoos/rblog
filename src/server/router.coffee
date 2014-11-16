@@ -10,10 +10,4 @@ class ServerRouter extends Router
         args = match[1..-1]
         @[route](args..., options)
 
-  wrapper: (update, render) ->
-    Q.spawn ->
-      yield update() if update?
-
-      render()
-
 module.exports = ServerRouter

@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-set -x
 set -e
 
 function echoStep {
@@ -20,8 +18,6 @@ if [[ ! -d ./tmp/postgres ]]; then
 
   echoStep "Creating database"
   createdb -p 3910 -h localhost rblog_development
-
-  pwd
 
   npm run setup_database
 

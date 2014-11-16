@@ -1,5 +1,5 @@
-require './configuration.coffee'
 Sequelize = require 'sequelize'
+require '../util/configuration.coffee'
 
 port = process.env.DATABASE_PORT
 host = process.env.DATABASE_HOST

@@ -3,7 +3,7 @@ Backbone = require 'backbone'
 
 View = require '../view.coffee'
 Router = require './router.coffee'
-Data = require './data.coffee'
+Data = require '../data.coffee'
 
 $(document).ready ->
   router = new Router(new Data, View)
