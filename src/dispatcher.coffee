@@ -1,56 +1,37 @@
-request = require 'superagent'
-require('q-superagent') request
 EventEmitter = require 'wolfy87-eventemitter'
-Q = require 'q'
 
 class Dispatcher extends EventEmitter
   @_storeClasses: []
+  @_actionClasses: []
 
   @registerStoreClass: (storeClass) ->
     @_storeClasses.push storeClass
 
+  @registerActionClass: (actionClass) ->
+    @_actionClasses.push actionClass
+
   constructor: ->
     @_stores = {}
+    @_actions = {}
     for storeClass in @constructor._storeClasses
       store = new storeClass @
       @_stores[store.storeName] = store
 
+    for actionClass in @constructor._actionClasses
+      action = new actionClass @
+      @_actions[action.actionName] = action
+
   store: (name) ->
     @_stores[name]
 
-  updatePosts: ->
-    Q.spawn =>
-      response = request
-        .get 'http://localhost:3901/posts'
-        .set 'Accept', 'application/json'
-        .q()
+  actions: (name) ->
+    @_actions[name]
 
-      @_dispatch 'fetchedPosts', posts: (yield response).body
-
-  updatePost: (slug) ->
-    Q.spawn =>
-      requestPost = request
-        .get "http://localhost:3901/posts/#{slug}"
-        .set 'Accept', 'application/json'
-        .q()
-
-      requestComments = request
-        .get "http://localhost:3901/posts/#{slug}/comments"
-        .set 'Accept', 'application/json'
-        .q()
-
-      @_dispatch 'fetchedPost',
-        slug: slug
-        post: (yield requestPost).body
-
-      @_dispatch 'fetchedCommentsForPost',
-        slug: slug
-        comments: (yield requestComments).body
-
-  _dispatch: (eventName, data) ->
+  dispatch: (eventName, data) ->
     @emitEvent eventName, [ data: data ]
 
 Dispatcher.registerStoreClass require('./stores/comments.coffee')
 Dispatcher.registerStoreClass require('./stores/posts.coffee')
+Dispatcher.registerActionClass require('./actions/posts.coffee')
 
 module.exports = Dispatcher

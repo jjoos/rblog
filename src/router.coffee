@@ -10,13 +10,13 @@ router = class Router
     @view = view
 
   index: (options) ->
-    action = => @dispatcher.updatePosts()
+    action = => @dispatcher.actions('posts').fetchPosts()
     render = => @view.renderIndex(@dispatcher, options)
 
     @wrapper action, render
 
   post: (slug, options) ->
-    action = => @dispatcher.updatePost(slug)
+    action = => @dispatcher.actions('posts').fetchPost(slug)
     render = => @view.renderPost(@dispatcher, slug, options)
     
     @wrapper action, render
