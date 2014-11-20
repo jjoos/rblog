@@ -25,9 +25,7 @@ class Dispatcher extends EventEmitter
         .set 'Accept', 'application/json'
         .q()
 
-      posts = (yield response).body
-      
-      @_emitEvent 'fetchedPosts', posts: posts
+      @_dispatch 'fetchedPosts', posts: (yield response).body
 
   updatePost: (slug) ->
     Q.spawn =>
@@ -41,18 +39,16 @@ class Dispatcher extends EventEmitter
         .set 'Accept', 'application/json'
         .q()
 
-      posts = (yield requestPost).body
-      @_emitEvent 'fetchedPost',
+      @_dispatch 'fetchedPost',
         slug: slug
-        post: posts
+        post: (yield requestPost).body
 
-      comments = (yield requestComments).body
-      @_emitEvent 'fetchedCommentsForPost',
+      @_dispatch 'fetchedCommentsForPost',
         slug: slug
-        comments: comments
+        comments: (yield requestComments).body
 
-  _emitEvent: (event, data) ->
-    @emitEvent event, [ data: data ]
+  _dispatch: (eventName, data) ->
+    @emitEvent eventName, [ data: data ]
 
 Dispatcher.registerStoreClass require('./stores/comments.coffee')
 Dispatcher.registerStoreClass require('./stores/posts.coffee')
