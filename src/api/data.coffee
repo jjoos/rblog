@@ -1,8 +1,7 @@
 db = require './database.coffee'
-Data = require '../data.coffee'
 Q = require 'q'
 
-class ServerData extends Data
+class Data
   updatePosts: ->
     async = Q.async =>
       @_posts ||= {}
@@ -31,4 +30,14 @@ class ServerData extends Data
 
     async()
 
-module.exports = ServerData
+  post: (slug) ->
+    for _, post of @_posts
+      return post if post.slug == slug
+
+  posts: ->
+    post for _, post of @_posts
+
+  commentsForSlug: (slug) ->
+    @_posts[slug]['comments']
+
+module.exports = Data

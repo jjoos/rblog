@@ -4,7 +4,7 @@ require('q-superagent') request
 EventEmitter = require 'wolfy87-eventemitter'
 Q = require 'q'
 
-class Data extends EventEmitter
+class Dispatcher extends EventEmitter
   updatePosts: ->
     Q.spawn =>
       response = yield request
@@ -47,4 +47,4 @@ class Data extends EventEmitter
   commentsForSlug: (slug) ->
     @_posts[slug]['comments']
 
-module.exports = Data
+module.exports = Dispatcher

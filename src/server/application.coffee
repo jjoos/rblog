@@ -3,7 +3,7 @@ Negotiator = require 'negotiator'
 
 require '../util/configuration.coffee'
 
-Data = require '../data.coffee'
+Dispatcher = require '../dispatcher.coffee'
 View = require './view.coffee'
 Router = require './router.coffee'
 
@@ -14,7 +14,7 @@ server = http.createServer (request, response) ->
   type = negotiator.mediaType availableMediaTypes
 
   if type == 'text/html'
-    router = new Router new Data, View
+    router = new Router new Dispatcher, View
     router.navigate request.url, {'response': response }
 
 server.listen process.env.WEB_PORT

@@ -3,10 +3,10 @@ Backbone = require 'backbone'
 
 View = require '../view.coffee'
 Router = require './router.coffee'
-Data = require '../data.coffee'
+Dispatcher = require '../dispatcher.coffee'
 
 $(document).ready ->
-  router = new Router(new Data, View)
+  router = new Router(new Dispatcher, View)
 
   Backbone.history.start pushState: true
 
