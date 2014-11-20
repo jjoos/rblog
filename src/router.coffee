@@ -5,34 +5,34 @@ router = class Router
     archive: /^\/?archives$/
     post: /^\/?posts\/([A-Za-z0-9\-]+)$/
 
-  constructor: (data, view) ->
-    @data = data
+  constructor: (dispatcher, view) ->
+    @dispatcher = dispatcher
     @view = view
 
   index: (options) ->
-    update = => @data.updatePosts()
-    render = => @view.renderIndex(@data, options)
+    action = => @dispatcher.updatePosts()
+    render = => @view.renderIndex(@dispatcher, options)
 
-    @wrapper update, render
+    @wrapper action, render
 
   post: (slug, options) ->
-    update = => @data.updatePost(slug)
-    render = => @view.renderPost(@data, slug, options)
+    action = => @dispatcher.updatePost(slug)
+    render = => @view.renderPost(@dispatcher, slug, options)
     
-    @wrapper update, render
+    @wrapper action, render
 
   about: (options) ->
-    @wrapper null, => @view.renderAbout(@data, options)
+    @wrapper null, => @view.renderAbout(@dispatcher, options)
 
   archive: (options) ->
-    @wrapper null, => @view.renderArchive(@data, options)
+    @wrapper null, => @view.renderArchive(@dispatcher, options)
 
-  wrapper: (update, render) ->
-    if update?
-      update()
-
-      @data.addListener 'change', ->
+  wrapper: (action, render) ->
+    if action?
+      @dispatcher.addListener 'change', ->
         render()
+
+      action()
     else
       render()
 

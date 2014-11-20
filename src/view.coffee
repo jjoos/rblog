@@ -246,29 +246,32 @@ Comments = React.createClass
     </div>
 
 class View
-  @renderIndex: (data, options) ->
+  @renderIndex: (dispatcher, options) ->
+    posts = dispatcher.store('posts').posts().data
     component = <BlogLayout>
-        <Index posts={data.posts()} />
+        <Index posts={posts} />
       </BlogLayout>
 
     @renderView(component, options)
 
-  @renderPost: (data, slug, options) ->
+  @renderPost: (dispatcher, slug, options) ->
+    post = dispatcher.store('posts').post(slug).data
+
     component = <BlogLayout>
-        <Post post={data.post(slug)} />
-        <Comments comments={data.commentsForSlug(slug)} />
+        <Post post={post} />
+        <Comments comments={post.comments} />
       </BlogLayout>
 
     @renderView(component, options)
 
-  @renderArchive: (data, options) ->
+  @renderArchive: (dispatcher, options) ->
     component = <BlogLayout>
         Archive
       </BlogLayout>
 
     @renderView(component, options)
 
-  @renderAbout: (data, options) ->
+  @renderAbout: (dispatcher, options) ->
     component = <BlogLayout>
         About
       </BlogLayout>

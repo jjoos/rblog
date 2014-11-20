@@ -1,20 +1,33 @@
-_ = require 'underscore'
 request = require 'superagent'
 require('q-superagent') request
 EventEmitter = require 'wolfy87-eventemitter'
 Q = require 'q'
 
 class Dispatcher extends EventEmitter
+  @_storeClasses: []
+
+  @registerStoreClass: (storeClass) ->
+    @_storeClasses.push storeClass
+
+  constructor: ->
+    @_stores = {}
+    for storeClass in @constructor._storeClasses
+      store = new storeClass @
+      @_stores[store.storeName] = store
+
+  store: (name) ->
+    @_stores[name]
+
   updatePosts: ->
     Q.spawn =>
-      response = yield request
+      response = request
         .get 'http://localhost:3901/posts'
         .set 'Accept', 'application/json'
         .q()
 
-      @_posts = response.body
-
-      @emitEvent 'change'
+      posts = (yield response).body
+      
+      @_emitEvent 'fetchedPosts', posts: posts
 
   updatePost: (slug) ->
     Q.spawn =>
@@ -28,23 +41,20 @@ class Dispatcher extends EventEmitter
         .set 'Accept', 'application/json'
         .q()
 
-      @_posts ||= {}
-      @_posts[slug] = (yield requestPost).body
+      posts = (yield requestPost).body
+      @_emitEvent 'fetchedPost',
+        slug: slug
+        post: posts
 
-      @_posts[slug]['comments'] = (yield requestComments).body
-      for comment in @_posts[slug]['comments']
-        @_comments ||= {}
-        @_comments[comment.id] = comment
-      @emitEvent 'change'
+      comments = (yield requestComments).body
+      @_emitEvent 'fetchedCommentsForPost',
+        slug: slug
+        comments: comments
 
-  post: (slug) ->
-    for _, post of @_posts
-      return post if post.slug == slug
+  _emitEvent: (event, data) ->
+    @emitEvent event, [ data: data ]
 
-  posts: ->
-    post for _, post of @_posts
-
-  commentsForSlug: (slug) ->
-    @_posts[slug]['comments']
+Dispatcher.registerStoreClass require('./stores/comments.coffee')
+Dispatcher.registerStoreClass require('./stores/posts.coffee')
 
 module.exports = Dispatcher

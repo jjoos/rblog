@@ -7,14 +7,14 @@ Router = require '../router.coffee'
 VirtualClass = require '../util/virtual-class.coffee'
 
 class ClientRouter extends VirtualClass Backbone.Router, Router
-  constructor: (data, view) ->
+  constructor: (dispatcher, view) ->
     @initializeRoutes()
 
     super
 
   execute: (callback, args) ->
     # stop listening on the old route for changes in the data
-    @data.removeEvent 'change'
+    @dispatcher.removeAllListeners 'change'
     callback.apply @, args if callback?
 
   initializeRoutes: ->
