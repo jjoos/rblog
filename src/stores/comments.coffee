@@ -1,14 +1,17 @@
+constants = require './../constants.coffee'
+
 class Comments
   storeName: 'comments'
 
-  eventHandlers: ->
-    fetchedCommentsForPost: @_handleFetchedCommentsForPost
-   
   constructor: (dispatcher) ->
     @_dispatcher = dispatcher
 
-    for eventName, handler of @eventHandlers()
-      dispatcher.addListener eventName, handler
+    @_registerEventHandlers()
+
+  _registerEventHandlers: ->
+    @_addListener constants.events.fetchPosts, @_handleFetchedCommentsForPost
+
+  _addListener: => @_dispatcher.addListener
 
   _handleFetchedCommentsForPost: ({data: {slug, comments}}) =>
     @_comments ||= {}

@@ -1,3 +1,4 @@
+constants = require './../constants.coffee'
 request = require 'superagent'
 require('q-superagent') request
 Q = require 'q'
@@ -20,11 +21,11 @@ class Posts
         .set 'Accept', 'application/json'
         .q()
 
-      @_dispatcher.dispatch 'fetchedPost',
+      @_dispatcher.dispatch constants.events.fetchPosts,
         slug: slug
         post: (yield requestPost).body
 
-      @_dispatcher.dispatch 'fetchedCommentsForPost',
+      @_dispatcher.dispatch constants.events.fetchedCommentsForPost,
         slug: slug
         comments: (yield requestComments).body
 
@@ -35,6 +36,6 @@ class Posts
         .set 'Accept', 'application/json'
         .q()
 
-      @_dispatcher.dispatch 'fetchedPosts', posts: (yield response).body
+      @_dispatcher.dispatch constants.events.fetchedPosts, posts: (yield response).body
 
 module.exports = Posts

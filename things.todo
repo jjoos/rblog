@@ -9,7 +9,7 @@ Static assets:
   ✔ Serve images @done (14-11-20 12:20)
 Organization:
   ☐ try grouping things arround subject and not arround type
-  ☐ add central constants file
+  ✔ add central constants file @done (14-11-20 13:25)
   ☐ extract flux things to package
 Styling:
   ☐ Add scss pipeline

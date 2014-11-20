@@ -1,18 +1,19 @@
+constants = require './../constants.coffee'
+
 class Posts
   storeName: 'posts'
 
-  eventHandlers: ->
-    fetchedCommentsForPost: @_handleFetchedCommentsForPost
-    fetchedPost: @_handleFetchedPost
-    fetchedPosts: @_handleFetchedPosts
-   
   constructor: (dispatcher) ->
     @_dispatcher = dispatcher
 
-    for eventName, handler of @eventHandlers()
-      dispatcher.addListener eventName, handler
+    @_registerEventHandlers()
     
     @_posts ||= {}
+
+  _registerEventHandlers: ->
+    @_addListener constants.events.fetchedCommentsForPost, @_handleFetchedCommentsForPost
+    @_addListener constants.events.fetchedPost, @_handleFetchedPost
+    @_addListener constants.events.fetchedPosts, @_handleFetchedPosts
 
   post: (slug) ->
     if @_posts[slug]?
@@ -46,6 +47,9 @@ class Posts
     @_posts_fetched = true
 
     @_change()
+
+  _addListener: (eventName, handler) ->
+    @_dispatcher.addListener eventName, handler
 
   _change: ->
     @_dispatcher.emitEvent 'change'
