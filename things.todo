@@ -1,26 +1,26 @@
+Isomorphic javascript website with ReactJS poc:
+
+Todo:
 Database:
-  ☐ Implement models
+  ✔ Implement models @done (14-11-20 12:20)
   ☐ Investigate moving all to firebase
 Static assets:
-  ☐ Run nginx in the long run, stupid to server statics with node
-  ☐ Serve images
+  ☐ Run nginx in the long run, stupid to server statics with node or deploy to cdn
+  ✔ Serve images @done (14-11-20 12:20)
+Organization:
+  ☐ try grouping things arround subject and not arround type
+  ☐ add central constants file
+  ☐ extract flux things to package
 Styling:
   ☐ Add scss pipeline
 Views:
   ☐ Move views to seperate files
   ☐ Configure favicon url to assets
-http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
-http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
+Tests:
+  ☐ Add jest
+  ☐ add tests
 
-Isomorphic javascript website with ReactJS
-
-Open discussion about different approaches to improve our frontend architecture, topics:
-- flux
-- backbone
-- routing
-- server side rendering
-
-**Reading list**
+Reading list and references:
 flux:
 http://facebook.github.io/flux/docs/overview.html
 http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html
@@ -83,3 +83,7 @@ http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html :
 - http://blogs.atlassian.com/2014/08/flux-architecture-step-by-step/
 - https://github.com/deloreanjs/delorean
 - https://www.youtube.com/watch?v=XhXC4SKOGfQ
+
+used layout:
+http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
+http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
