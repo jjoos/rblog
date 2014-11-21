@@ -21,4 +21,13 @@ class ClientRouter extends VirtualClass Backbone.Router, Router
     for key, regex of @routeRegexes()
       @route regex, key
 
+  wrapper: (action, render) ->
+    if action?
+      @dispatcher.addListener 'change', ->
+        render()
+
+      action()
+    else
+      render()
+
 module.exports = ClientRouter

@@ -1,5 +1,6 @@
 module.exports =
-  events:
-    fetched_post: 'fetchedPost'
-    fetchedCommentsForPost: 'fetchedCommentsForPost'
-    fetchedPosts: 'fetchedPosts'
+  post:
+    fetched: 'postFetched'
+    fetchedComments: 'postFetchedComments'
+  posts:
+    fetched: 'postsFetched'

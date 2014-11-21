@@ -11,9 +11,9 @@ class Posts
     @_posts ||= {}
 
   _registerEventHandlers: ->
-    @_addListener constants.events.fetchedCommentsForPost, @_handleFetchedCommentsForPost
-    @_addListener constants.events.fetchedPost, @_handleFetchedPost
-    @_addListener constants.events.fetchedPosts, @_handleFetchedPosts
+    @_addListener constants.post.fetchedComments, @_handleFetchedCommentsForPost
+    @_addListener constants.post.fetched, @_handleFetchedPost
+    @_addListener constants.posts.fetched, @_handleFetchedPosts
 
   post: (slug) ->
     if @_posts[slug]?

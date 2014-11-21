@@ -9,11 +9,11 @@ class Comments
     @_registerEventHandlers()
 
   _registerEventHandlers: ->
-    @_addListener constants.events.fetchPosts, @_handleFetchedCommentsForPost
+    @_addListener constants.posts.fetch, @_handlePostsFetch
 
   _addListener: => @_dispatcher.addListener
 
-  _handleFetchedCommentsForPost: ({data: {slug, comments}}) =>
+  _handlePostsFetch: ({data: {slug, comments}}) =>
     @_comments ||= {}
     for comment in comments
       @_comments[comment.id] = comment

@@ -10,7 +10,7 @@ class Posts
     @_dispatcher = dispatcher
 
   fetchPost: (slug) ->
-    Q.spawn =>
+    async = Q.async =>
       requestPost = request
         .get "http://localhost:3901/posts/#{slug}"
         .set 'Accept', 'application/json'
@@ -21,21 +21,24 @@ class Posts
         .set 'Accept', 'application/json'
         .q()
 
-      @_dispatcher.dispatch constants.events.fetchPosts,
+      @_dispatcher.dispatch constants.post.fetched,
         slug: slug
         post: (yield requestPost).body
 
-      @_dispatcher.dispatch constants.events.fetchedCommentsForPost,
+      @_dispatcher.dispatch constants.post.fetchedComments,
         slug: slug
         comments: (yield requestComments).body
 
+    async()
+
   fetchPosts: ->
-    Q.spawn =>
+    async = Q.async =>
       response = request
         .get 'http://localhost:3901/posts'
         .set 'Accept', 'application/json'
         .q()
 
-      @_dispatcher.dispatch constants.events.fetchedPosts, posts: (yield response).body
+      @_dispatcher.dispatch constants.posts.fetched, posts: (yield response).body
 
+    async()
 module.exports = Posts

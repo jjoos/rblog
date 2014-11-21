@@ -27,13 +27,4 @@ router = class Router
   archive: (options) ->
     @wrapper null, => @view.renderArchive(@dispatcher, options)
 
-  wrapper: (action, render) ->
-    if action?
-      @dispatcher.addListener 'change', ->
-        render()
-
-      action()
-    else
-      render()
-
 module.exports = Router
