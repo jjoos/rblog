@@ -4,7 +4,7 @@ Negotiator = require 'negotiator'
 require '../util/configuration.coffee'
 
 Dispatcher = require '../dispatcher.coffee'
-View = require './view.coffee'
+View = require './view.cjsx'
 Router = require './router.coffee'
 
 availableMediaTypes = ['text/html']

@@ -1,51 +1,9 @@
 # @jsx React.DOM
 React = require 'react'
 
-Post = React.createClass
-  displayName: 'Post'
+SidebarSection = require './sidebar_section.cjsx'
 
-  render: ->
-    <article>
-      <h2>{@props.post.title}</h2>
-      <p>{@props.post.body}</p>
-    </article>
-
-Summary = React.createClass
-  displayName: 'Summary'
-
-  render: ->
-    <article>
-      <a href={"/posts/#{@props.post.slug}"}>
-        <h2>{@props.post.title}</h2>
-      </a>
-      <p>{@props.post.body.substring(0,10)}...</p>
-      <footer className="postinfo">
-        <li>17th October 2011</li>
-        <li>
-          Posted in
-          <a href="#">
-            Articles
-          </a>
-        </li>
-        <li>
-          <a
-            href={@props.post.link}>
-            Continue Reading »
-          </a>
-        </li>
-      </footer>
-    </article>
-
-SidebarSection = React.createClass
-  displayName: 'SidebarSection'
-
-  render: ->
-    <section id={@props.id}>
-      <h3>{@props.title}</h3>
-      {@props.children}
-    </section>
-
-BlogLayout = React.createClass
+module.exports = React.createClass
   displayName: 'BlogLayout'
 
   menu: ->
@@ -202,83 +160,3 @@ BlogLayout = React.createClass
         </div>
       </footer>
     </div>
-
-Index = React.createClass
-  displayName: 'Index'
-
-  posts: ->
-    for post in @props.posts
-      <Summary
-        post={post}
-        key={post.slug} />
-
-  render: ->
-    <div>
-      {@posts()}
-    </div>
-
-Comment = React.createClass
-  displayName: 'Comment'
-
-  render: ->
-    <div>
-      <div>
-        <span>Author: {@props.comment.author}</span>
-        <span>Created at: {@props.comment.createdAt}</span>
-      </div>
-      <div>
-        {@props.comment.body}
-      </div>
-    </div>
-
-Comments = React.createClass
-  displayName: 'Comments'
-
-  comments: ->
-    for comment in @props.comments
-      <Comment
-        comment={comment}
-        key={comment.id} />
-
-  render: ->
-    <div>
-      {@comments()}
-    </div>
-
-class View
-  @renderIndex: (dispatcher, options) ->
-    posts = dispatcher.store('posts').posts().data
-    component = <BlogLayout>
-        <Index posts={posts} />
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderPost: (dispatcher, slug, options) ->
-    post = dispatcher.store('posts').post(slug).data
-
-    component = <BlogLayout>
-        <Post post={post} />
-        <Comments comments={post.comments} />
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderArchive: (dispatcher, options) ->
-    component = <BlogLayout>
-        Archive
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderAbout: (dispatcher, options) ->
-    component = <BlogLayout>
-        About
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderView: (component, options) ->
-    React.renderComponent component, window.document.body
-
-module.exports = View

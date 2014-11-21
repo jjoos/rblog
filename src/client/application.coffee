@@ -1,7 +1,7 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 
-View = require '../view.coffee'
+View = require '../view.cjsx'
 Router = require './router.coffee'
 Dispatcher = require '../dispatcher.coffee'
 

@@ -3,7 +3,7 @@ React = require 'react'
 
 files = require '../util/files.coffee'
 
-View = require '../view.coffee'
+View = require '../view.cjsx'
 
 class ServerView extends View
   @renderView: (component, options) ->
