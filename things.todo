@@ -9,22 +9,34 @@ Static assets:
   ☐ Run nginx in the long run or deploy to cdn
   ✔ Serve images @done (14-11-20 12:20)
 Organization:
-  ☐ grouping things arround subject (experiment)
+  ✔ grouping things arround subject (experiment, no benefits) @done (14-11-23 14:38)
   ✔ add central constants file @done (14-11-20 13:25)
+Functionality:
+  ☐ Write comments
+  ☐ Sharing
+  ☐ login
+  ☐ Adding posts
+write articles:
+  ☐ react views (from talk)
+  ☐ flux and benifits
+  ☐ isomorphic js apps
+  ☐ introducing own framework (if not using other framework)
+  ☐ comparison of flux frameworks
+  ☐ testing
+  ☐ push events, websockets with flux
 Styling:
   ☐ Add scss pipeline or use 'react css inline'
 Views:
-  ☐ Move views to seperate files
+  ✔ Move views to seperate files @done (14-11-23 14:30)
   ☐ Configure favicon url to assets
 Tests:
   ☐ Add jest
   ☐ add tests
 Framework:
+  ☐ throttle dispatches, every action should return a promise that is kept track ok (cofffe-react). This way we can check if all the actions are done and add structures to wait on each other. This way we can make sure not two dispatches run at the same time.
   ☐ throttle change events
   ☐ extract flux things to package
   ☐ better error handling
-  ☐ throttle dispatches
-  ☐ store promises
   ☐ investigate using existing framework
 
 Reading list and references:
