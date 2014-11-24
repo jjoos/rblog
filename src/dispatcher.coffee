@@ -1,6 +1,6 @@
-EventEmitter = require 'wolfy87-eventemitter'
+Q = require 'q'
 
-class Dispatcher extends EventEmitter
+class Dispatcher
   @_storeClasses: []
   @_actionClasses: []
 
@@ -11,6 +11,7 @@ class Dispatcher extends EventEmitter
     @_actionClasses.push actionClass
 
   constructor: ->
+    @_callbacks = {}
     @_stores = {}
     @_actions = {}
     for storeClass in @constructor._storeClasses
@@ -27,8 +28,39 @@ class Dispatcher extends EventEmitter
   actions: (name) ->
     @_actions[name]
 
+  addListener: (eventName, callback, store) ->
+    @_callbacks[eventName] ||= {}
+    @_callbacks[eventName][store.storeName] = callback
+
+  removeListener: (eventName, callback, store) ->
+    @_callbacks[eventName] ||= {}
+    delete @_callbacks[eventName][store.storeName]
+
+  removeAllListeners: (eventName) ->
+    @_callbacks[eventName] = {}
+
   dispatch: (eventName, data) ->
-    @emitEvent eventName, [ data: data ]
+    promise = @currentDispatchPromise
+    if !promise || promise.isFulfilled()
+      @currentDispatchPromise = @_emitEvent eventName, data: data
+    else
+      @currentDispatchPromise.then ->
+        @_emitEvent eventName, data: data
+
+    @currentDispatchPromise
+
+  _emitEvent: (eventName, payLoad) ->
+    promiseMethods = {}
+    promises = {}
+    for storeName, callback of @_callbacks[eventName]
+      do (callback, storeName) ->
+        promiseMethods[storeName] =
+          Q.fbind -> callback payLoad, promises
+
+    for storeName, promiseMethod of promiseMethods
+      promises[storeName] = promiseMethod()
+
+    Q.all(promises)
 
 Dispatcher.registerStoreClass require('./stores/comments.coffee')
 Dispatcher.registerStoreClass require('./stores/posts.coffee')

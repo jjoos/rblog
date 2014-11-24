@@ -33,8 +33,8 @@ Tests:
   ☐ Add jest
   ☐ add tests
 Framework:
-  ☐ throttle dispatches, every action should return a promise that is kept track ok (cofffe-react). This way we can check if all the actions are done and add structures to wait on each other. This way we can make sure not two dispatches run at the same time.
-  ☐ throttle change events
+  ✔ throttle dispatches, every action should return a promise that is kept track ok (cofffe-react). This way we can check if all the actions are done and add structures to wait on each other. This way we can make sure not two dispatches run at the same time. @done (14-11-24 22:24)
+  ✔ throttle change events @done (14-11-24 22:24)
   ☐ extract flux things to package
   ☐ better error handling
   ☐ investigate using existing framework

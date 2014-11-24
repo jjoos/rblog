@@ -21,11 +21,11 @@ class Posts
         .set 'Accept', 'application/json'
         .q()
 
-      @_dispatcher.dispatch constants.post.fetched,
+      yield @_dispatcher.dispatch constants.post.fetched,
         slug: slug
         post: (yield requestPost).body
 
-      @_dispatcher.dispatch constants.post.fetchedComments,
+      yield @_dispatcher.dispatch constants.post.fetchedComments,
         slug: slug
         comments: (yield requestComments).body
 

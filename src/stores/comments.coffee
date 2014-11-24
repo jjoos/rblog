@@ -1,3 +1,5 @@
+Q = require 'q'
+
 constants = require './../constants.coffee'
 
 class Comments
@@ -9,9 +11,10 @@ class Comments
     @_registerEventHandlers()
 
   _registerEventHandlers: ->
-    @_addListener constants.posts.fetch, @_handlePostsFetch
+    @_addListener constants.post.fetchedComments, @_handlePostsFetch
 
-  _addListener: => @_dispatcher.addListener
+  _addListener: (eventName, callback) =>
+    @_dispatcher.addListener eventName, callback, @
 
   _handlePostsFetch: ({data: {slug, comments}}) =>
     @_comments ||= {}

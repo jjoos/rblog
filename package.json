@@ -43,8 +43,7 @@
     "react": "0.11.2",
     "sequelize": "~2.0.0-rc1",
     "superagent": "^0.21.0",
-    "underscore": "1.7.0",
-    "wolfy87-eventemitter": "^4.2.9"
+    "underscore": "1.7.0"
   },
   "scripts": {
     "setup_database": "coffee --nodejs --harmony bin/setup_database.coffee",
