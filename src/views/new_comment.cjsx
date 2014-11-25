@@ -1,7 +1,5 @@
 # @jsx React.DOM
-DispatcherHelper = require './dispatcher_helper.coffee'
-
-React = require 'react'
+{DispatcherHelper, React} = require './../../vendor/capacitor/src/capacitor.coffee'
 
 module.exports = React.createClass
   displayName: 'NewComment'

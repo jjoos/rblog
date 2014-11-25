@@ -1,5 +1,5 @@
 # @jsx React.DOM
-React = require 'react'
+{React} = require './../vendor/capacitor/src/capacitor.coffee'
 
 BlogLayout = require './views/blog_layout.cjsx'
 Index = require './views/index.cjsx'

@@ -1,6 +1,6 @@
 React = require 'react'
 
-Dispatcher = require '../dispatcher.coffee'
+Dispatcher = require './dispatcher.coffee'
 
 module.exports =
   propTypes:

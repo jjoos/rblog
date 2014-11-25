@@ -22,8 +22,6 @@ header a, h2 a {
 
 #container {
   width: 916px; margin: 0 auto; padding: 48px 22px 0 22px;
-  
-  background: url(images/grid.jpg); overflow: hidden;
 }
 
 header {

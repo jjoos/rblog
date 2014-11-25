@@ -1,0 +1,48 @@
+{
+  "name": "capacitor",
+  "title": "Capacitor",
+  "description": "JavaScript library for Flux like architectures",
+  "version": "0.0.1",
+  "main": "src/capacitor.js",
+  "homepage": "https://github.com/jjoos/capacitor",
+  "author": {
+    "name": "Jan Deelstra",
+    "url": "https://twitter.com/jjoos"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjoos/capacitor"
+  },
+  "keywords": [
+    "flux",
+    "fluxjs",
+    "react",
+    "reactjs",
+    "framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/jjoos/capacitor/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jjoos/capacitor/blob/0.0.1/MIT-LICENSE.txt"
+    }
+  ],
+  "dependencies": {
+  	"Q": "*",
+  	"react": "*"
+  },
+  "devDependencies": { },
+  "scripts": {
+    "build": "npm install && grunt",
+    "start": "grunt watch",
+    "test": "grunt"
+  },
+  "maintainers": [
+    {
+      "name": "Jan Deelstra",
+      "email": "jan@deelstra.org"
+    }
+  ]
+}

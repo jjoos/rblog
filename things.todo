@@ -37,8 +37,9 @@ Framework:
   ✔ throttle dispatches, every action should return a promise that is kept track ok (cofffe-react). This way we can check if all the actions are done and add structures to wait on each other. This way we can make sure not two dispatches run at the same time. @done (14-11-24 22:24)
   ✔ throttle change events @done (14-11-24 22:24)
   ☐ Let dispatcher helper use childContext
-  ☐ how to get data (posts, post, data: methods)
-  ☐ extract flux things to package
+  ✔ how to get data (posts, post, data: methods) (split out in stores) @done (14-11-25 16:32)
+  ☐ extract flux things
+  ☐ move flux things to npm package
   ☐ better error handling
   ☐ investigate using existing framework
 

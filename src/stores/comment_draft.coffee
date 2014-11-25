@@ -1,10 +1,12 @@
+{Store} = require './../../vendor/capacitor/src/capacitor.coffee'
+
 constants = require './../constants.coffee'
 
-module.exports = class
+module.exports = class extends Store
   storeName: 'commentDraft'
 
   constructor: (dispatcher) ->
-    @_dispatcher = dispatcher
+    super
 
     @_registerEventHandlers()
 
@@ -12,22 +14,16 @@ module.exports = class
     @_draftValid = false
     @_draftErrors = {}
 
+  _registerEventHandlers: ->
+    @_addListener constants.comment.draft.attributeChanged, @_handleAttributeChanged
+
   data: ->
     draft:
       body: @_draftBody
     errors: @_draftErrors
     valid: @_draftValid
 
-  _registerEventHandlers: ->
-    @_addListener constants.comment.draft.attributeChanged, @_handleAttributeChanged
-
-  _addListener: (eventName, callback) =>
-    @_dispatcher.addListener eventName, callback, @storeName
-
   _handleAttributeChanged: ({data: {attribute: attribute, value: value}}) =>
     @_draftBody = value
 
     @_change()
-
-  _change: ->
-    @_dispatcher.dispatch 'change'

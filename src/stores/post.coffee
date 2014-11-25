@@ -1,10 +1,12 @@
+{Store} = require './../../vendor/capacitor/src/capacitor.coffee'
+
 constants = require './../constants.coffee'
 
-module.exports = class
+module.exports = class extends Store
   storeName: 'post'
 
   constructor: (dispatcher) ->
-    @_dispatcher = dispatcher
+    super
 
     @_registerEventHandlers()
 
@@ -33,9 +35,3 @@ module.exports = class
     @_posts[slug] = post
 
     @_change()
-
-  _addListener: (eventName, handler) ->
-    @_dispatcher.addListener eventName, handler, @storeName
-
-  _change: ->
-    @_dispatcher.dispatch 'change'

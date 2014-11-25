@@ -1,3 +1,4 @@
+{Actions} = require './../../vendor/capacitor/src/capacitor.coffee'
 request = require 'superagent'
 require('q-superagent') request
 Q = require 'q'
@@ -5,11 +6,8 @@ Q = require 'q'
 constants = require './../constants.coffee'
 View = require('./../view.cjsx')
 
-module.exports = class
+module.exports = class extends Actions
   actionName: 'navigation'
-
-  constructor: (dispatcher) ->
-    @_dispatcher = dispatcher
   
   index: (options) ->
     action = => @_dispatcher.actions('posts').fetchPosts()
