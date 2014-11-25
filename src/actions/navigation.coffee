@@ -23,7 +23,7 @@ module.exports = class Navigation
     action = => @_dispatcher.actions('posts').fetchPost(slug)
     renderComponent = => View.renderPost(@_dispatcher, slug)
     
-    @_dispatcher.dispatch constants.navigation.post
+    @_dispatcher.dispatch constants.navigation.post, slug
     @_render action, renderComponent, options
 
   about: (options) ->

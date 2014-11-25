@@ -28,9 +28,9 @@ class Dispatcher
   actions: (name) ->
     @_actions[name]
 
-  addListener: (eventName, callback, store) ->
+  addListener: (eventName, callback, name) ->
     @_callbacks[eventName] ||= {}
-    @_callbacks[eventName][store.storeName] = callback
+    @_callbacks[eventName][name] = callback
 
   removeListener: (eventName, callback, store) ->
     @_callbacks[eventName] ||= {}
@@ -52,13 +52,13 @@ class Dispatcher
   _emitEvent: (eventName, payLoad) ->
     promiseMethods = {}
     promises = {}
-    for storeName, callback of @_callbacks[eventName]
-      do (callback, storeName) ->
-        promiseMethods[storeName] =
+    for name, callback of @_callbacks[eventName]
+      do (callback, name) ->
+        promiseMethods[name] =
           Q.fbind -> callback payLoad, promises
 
-    for storeName, promiseMethod of promiseMethods
-      promises[storeName] = promiseMethod().done()
+    for name, promiseMethod of promiseMethods
+      promises[name] = promiseMethod().done()
 
     Q.all(promises)
 

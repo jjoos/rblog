@@ -49,9 +49,9 @@ class Posts
     @_change()
 
   _addListener: (eventName, handler) ->
-    @_dispatcher.addListener eventName, handler, @
+    @_dispatcher.addListener eventName, handler, @storeName
 
   _change: ->
-    @_dispatcher.dispatch 'change', null
+    @_dispatcher.dispatch 'change'
 
 module.exports = Posts

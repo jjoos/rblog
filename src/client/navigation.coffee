@@ -5,7 +5,7 @@ React = require 'react'
 class ClientNavigation extends Navigation
   _render: (action, getComponent, options) ->
     if action?
-      @_dispatcher.addListener 'change', @_renderComponent(getComponent), {storeName: 'stub'}
+      @_dispatcher.addListener 'change', @_renderComponent(getComponent), 'render'
 
       action()
     else

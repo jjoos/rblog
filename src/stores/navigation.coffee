@@ -1,7 +1,7 @@
 constants = require './../constants.coffee'
 
 class Navigation
-  storeName: 'comments'
+  storeName: 'navigation'
 
   constructor: (dispatcher) ->
     @_dispatcher = dispatcher
@@ -12,7 +12,7 @@ class Navigation
     @_addListener constants.post.fetchedComments, @_handlePostsFetch
 
   _addListener: (eventName, callback) =>
-    @_dispatcher.addListener eventName, callback, @
+    @_dispatcher.addListener eventName, callback, @storeName
 
   _handlePostsFetch: ({data: {slug, comments}}) =>
     @_comments ||= {}
@@ -22,6 +22,6 @@ class Navigation
     @_change()
 
   _change: ->
-    @_dispatcher.dispatch 'change', null
+    @_dispatcher.dispatch 'change'
 
 module.exports = Comments
