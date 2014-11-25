@@ -9,7 +9,7 @@ class ClientNavigation extends Navigation
 
       action()
     else
-      _renderComponent(getComponent)()
+      @_renderComponent(getComponent)()
 
   _renderComponent: (getComponent) -> ->
     React.renderComponent getComponent(), window.document.body

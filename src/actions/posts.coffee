@@ -4,14 +4,16 @@ Q = require 'q'
 
 constants = require './../constants.coffee'
 
-class Posts
+module.exports = class Posts
   actionName: 'posts'
 
   constructor: (dispatcher) ->
     @_dispatcher = dispatcher
 
-  fetchPost: (slug) ->
+  fetchPost: ->
     async = Q.async =>
+      {slug} = @_dispatcher.store('navigation').data()
+
       requestPost = request
         .get "http://localhost:3901/posts/#{slug}"
         .set 'Accept', 'application/json'
@@ -42,4 +44,3 @@ class Posts
       @_dispatcher.dispatch constants.posts.fetched, posts: (yield response).body
 
     async()
-module.exports = Posts

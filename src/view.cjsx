@@ -9,19 +9,19 @@ NewComment = require './views/new_comment.cjsx'
 
 module.exports = class View
   @renderIndex: (dispatcher) ->
-    posts = dispatcher.store('posts').posts().data
+    posts = dispatcher.store('posts').data()
 
     <BlogLayout>
-      <Index posts={posts} />
+      <Index posts={posts.data} />
     </BlogLayout>
 
-  # TODO: get slug from navigation store
-  @renderPost: (dispatcher, slug) ->
-    post = dispatcher.store('posts').post(slug).data
+  @renderPost: (dispatcher) ->
+    navigation = dispatcher.store('navigation').data()
+    post = dispatcher.store('post').data()
 
     <BlogLayout>
-      <Post post={post} />
-      <Comments comments={post.comments} />
+      <Post post={post.data} />
+      <Comments comments={post.data.comments} />
       <NewComment dispatcher={dispatcher} />
     </BlogLayout>
 

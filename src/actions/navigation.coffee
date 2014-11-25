@@ -3,7 +3,6 @@ require('q-superagent') request
 Q = require 'q'
 
 constants = require './../constants.coffee'
-
 View = require('./../view.cjsx')
 
 module.exports = class Navigation
@@ -14,26 +13,26 @@ module.exports = class Navigation
   
   index: (options) ->
     action = => @_dispatcher.actions('posts').fetchPosts()
-    renderComponent = => View.renderIndex(@_dispatcher)
+    renderComponent = => View.renderIndex @_dispatcher
 
-    @_dispatcher.dispatch constants.navigation.index
-    @_render action, renderComponent, options
+    @_dispatcher.dispatch(constants.navigation.index).then =>
+      @_render action, renderComponent, options
 
   post: (slug, options) ->
     action = => @_dispatcher.actions('posts').fetchPost(slug)
-    renderComponent = => View.renderPost(@_dispatcher, slug)
+    renderComponent = => View.renderPost @_dispatcher
     
-    @_dispatcher.dispatch constants.navigation.post, slug
-    @_render action, renderComponent, options
+    @_dispatcher.dispatch(constants.navigation.post, slug: slug).then =>
+      @_render action, renderComponent, options
 
   about: (options) ->
     renderComponent = => View.renderAbout @_dispatcher
 
-    @_dispatcher.dispatch constants.navigation.about
-    @_render null, renderComponent, options
+    @_dispatcher.dispatch(constants.navigation.about).then =>
+      @_render null, renderComponent, options
 
   archive: (options) ->
     renderComponent = => View.renderArchive @_dispatcher
 
-    @_dispatcher.dispatch constants.navigation.archive
-    @_render null, renderComponent, options
+    @_dispatcher.dispatch(constants.navigation.archive).then =>
+      @_render null, renderComponent, options
