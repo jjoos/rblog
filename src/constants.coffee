@@ -4,3 +4,8 @@ module.exports =
     fetchedComments: 'postFetchedComments'
   posts:
     fetched: 'postsFetched'
+  navigation:
+    index: 'navigateIndex'
+    post: 'navigatePost'
+    about: 'navigateAbout'
+    archive: 'navigateArchive'

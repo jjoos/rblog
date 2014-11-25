@@ -6,40 +6,28 @@ Index = require './views/index.cjsx'
 Post = require './views/post.cjsx'
 Comments = require './views/comments.cjsx'
 
-class View
-  @renderIndex: (dispatcher, options) ->
+module.exports = class View
+  @renderIndex: (dispatcher) ->
     posts = dispatcher.store('posts').posts().data
-    component = <BlogLayout>
-        <Index posts={posts} />
-      </BlogLayout>
+    <BlogLayout>
+      <Index posts={posts} />
+    </BlogLayout>
 
-    @renderView(component, options)
-
-  @renderPost: (dispatcher, slug, options) ->
+  # TODO: get slug from navigation store
+  @renderPost: (dispatcher, slug) ->
     post = dispatcher.store('posts').post(slug).data
 
-    component = <BlogLayout>
-        <Post post={post} />
-        <Comments comments={post.comments} />
-      </BlogLayout>
+    <BlogLayout>
+      <Post post={post} />
+      <Comments comments={post.comments} />
+    </BlogLayout>
 
-    @renderView(component, options)
+  @renderArchive: (dispatcher) ->
+    <BlogLayout>
+      Archive
+    </BlogLayout>
 
-  @renderArchive: (dispatcher, options) ->
-    component = <BlogLayout>
-        Archive
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderAbout: (dispatcher, options) ->
-    component = <BlogLayout>
-        About
-      </BlogLayout>
-
-    @renderView(component, options)
-
-  @renderView: (component, options) ->
-    React.renderComponent component, window.document.body
-
-module.exports = View
+  @renderAbout: (dispatcher) ->
+    <BlogLayout>
+      About
+    </BlogLayout>

@@ -14,19 +14,11 @@ class ClientRouter extends VirtualClass Backbone.Router, Router
 
   execute: (callback, args) ->
     # stop listening on the old route for changes in the data
-    @dispatcher.removeAllListeners 'change'
+    @_dispatcher.removeAllListeners 'change'
     callback.apply @, args if callback?
 
   initializeRoutes: ->
     for key, regex of @routeRegexes()
       @route regex, key
-
-  wrapper: (action, render) ->
-    if action?
-      @dispatcher.addListener 'change', render, {storeName: 'stub'}
-
-      action()
-    else
-      render()
 
 module.exports = ClientRouter

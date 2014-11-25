@@ -1,6 +1,6 @@
 constants = require './../constants.coffee'
 
-class Comments
+class Navigation
   storeName: 'comments'
 
   constructor: (dispatcher) ->

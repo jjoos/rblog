@@ -1,12 +1,12 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 
-View = require '../view.cjsx'
 Router = require './router.coffee'
 Dispatcher = require '../dispatcher.coffee'
+require './navigation.coffee'
 
 $(document).ready ->
-  router = new Router(new Dispatcher, View)
+  router = new Router(new Dispatcher)
 
   Backbone.history.start pushState: true
 

@@ -1,30 +1,23 @@
-router = class Router
+constants = require './constants.coffee'
+
+module.exports = class Router
   routeRegexes: ->
     index: /^\/?$/
     about: /^\/?about$/
     archive: /^\/?archives$/
     post: /^\/?posts\/([A-Za-z0-9\-]+)$/
 
-  constructor: (dispatcher, view) ->
-    @dispatcher = dispatcher
-    @view = view
+  constructor: (dispatcher) ->
+    @_dispatcher = dispatcher
 
   index: (options) ->
-    action = => @dispatcher.actions('posts').fetchPosts()
-    render = => @view.renderIndex(@dispatcher, options)
-
-    @wrapper action, render
+    @_dispatcher.actions('navigation').index options
 
   post: (slug, options) ->
-    action = => @dispatcher.actions('posts').fetchPost(slug)
-    render = => @view.renderPost(@dispatcher, slug, options)
-    
-    @wrapper action, render
+    @_dispatcher.actions('navigation').post slug, options
 
   about: (options) ->
-    @wrapper null, => @view.renderAbout(@dispatcher, options)
+    @_dispatcher.actions('navigation').about options
 
   archive: (options) ->
-    @wrapper null, => @view.renderArchive(@dispatcher, options)
-
-module.exports = Router
+    @_dispatcher.actions('navigation').archive options
