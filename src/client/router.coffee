@@ -23,8 +23,7 @@ class ClientRouter extends VirtualClass Backbone.Router, Router
 
   wrapper: (action, render) ->
     if action?
-      @dispatcher.addListener 'change', ->
-        render()
+      @dispatcher.addListener 'change', render, {storeName: 'stub'}
 
       action()
     else

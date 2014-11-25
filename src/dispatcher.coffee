@@ -44,7 +44,7 @@ class Dispatcher
     if !promise || promise.isFulfilled()
       @currentDispatchPromise = @_emitEvent eventName, data: data
     else
-      @currentDispatchPromise.then ->
+      @currentDispatchPromise.then =>
         @_emitEvent eventName, data: data
 
     @currentDispatchPromise
@@ -58,7 +58,7 @@ class Dispatcher
           Q.fbind -> callback payLoad, promises
 
     for storeName, promiseMethod of promiseMethods
-      promises[storeName] = promiseMethod()
+      promises[storeName] = promiseMethod().done()
 
     Q.all(promises)
 

@@ -24,6 +24,6 @@ class Comments
     @_change()
 
   _change: ->
-    @_dispatcher.emitEvent 'change'
+    @_dispatcher.dispatch 'change', null
 
 module.exports = Comments

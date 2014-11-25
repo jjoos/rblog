@@ -52,6 +52,6 @@ class Posts
     @_dispatcher.addListener eventName, handler, @
 
   _change: ->
-    @_dispatcher.dispatch 'change'
+    @_dispatcher.dispatch 'change', null
 
 module.exports = Posts

@@ -1,7 +1,8 @@
-constants = require './../constants.coffee'
 request = require 'superagent'
 require('q-superagent') request
 Q = require 'q'
+
+constants = require './../constants.coffee'
 
 class Posts
   actionName: 'posts'
