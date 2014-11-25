@@ -9,3 +9,6 @@ module.exports =
     post: 'navigatePost'
     about: 'navigateAbout'
     archive: 'navigateArchive'
+  comment:
+    draft:
+      attributeChanged: 'commentDraftAttributeChanged'

@@ -62,8 +62,9 @@ class Dispatcher
 
     Q.all(promises)
 
-Dispatcher.registerStoreClass require('./stores/comments.coffee')
+Dispatcher.registerStoreClass require('./stores/comment_draft.coffee')
 Dispatcher.registerStoreClass require('./stores/posts.coffee')
 Dispatcher.registerActionClass require('./actions/posts.coffee')
+Dispatcher.registerActionClass require('./actions/comment_draft.coffee')
 
 module.exports = Dispatcher
