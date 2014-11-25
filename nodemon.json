@@ -1,5 +1,6 @@
 {
   "execMap": {
     "coffee": "node_modules/.bin/cjsx --nodejs --harmony"
-  }
+  },
+  "ext": "js coffee cjsx"
 }
