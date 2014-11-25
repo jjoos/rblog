@@ -6,7 +6,7 @@ Backbone.$ = $
 Router = require '../router.coffee'
 VirtualClass = require '../util/virtual-class.coffee'
 
-class ClientRouter extends VirtualClass Backbone.Router, Router
+module.exports = class extends VirtualClass Backbone.Router, Router
   constructor: (dispatcher, view) ->
     @initializeRoutes()
 
@@ -20,5 +20,3 @@ class ClientRouter extends VirtualClass Backbone.Router, Router
   initializeRoutes: ->
     for key, regex of @routeRegexes()
       @route regex, key
-
-module.exports = ClientRouter

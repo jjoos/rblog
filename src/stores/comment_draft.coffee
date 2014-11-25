@@ -1,6 +1,6 @@
 constants = require './../constants.coffee'
 
-module.exports = class CommentDraft
+module.exports = class
   storeName: 'commentDraft'
 
   constructor: (dispatcher) ->

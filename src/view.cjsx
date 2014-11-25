@@ -7,15 +7,15 @@ Post = require './views/post.cjsx'
 Comments = require './views/comments.cjsx'
 NewComment = require './views/new_comment.cjsx'
 
-module.exports = class View
-  @renderIndex: (dispatcher) ->
+module.exports =
+  renderIndex: (dispatcher) ->
     posts = dispatcher.store('posts').data()
 
     <BlogLayout>
       <Index posts={posts.data} />
     </BlogLayout>
 
-  @renderPost: (dispatcher) ->
+  renderPost: (dispatcher) ->
     navigation = dispatcher.store('navigation').data()
     post = dispatcher.store('post').data()
 
@@ -25,12 +25,12 @@ module.exports = class View
       <NewComment dispatcher={dispatcher} />
     </BlogLayout>
 
-  @renderArchive: (dispatcher) ->
+  renderArchive: (dispatcher) ->
     <BlogLayout>
       Archive
     </BlogLayout>
 
-  @renderAbout: (dispatcher) ->
+  renderAbout: (dispatcher) ->
     <BlogLayout>
       About
     </BlogLayout>

@@ -1,6 +1,6 @@
 constants = require './../constants.coffee'
 
-class Posts
+module.exports = class
   storeName: 'posts'
 
   constructor: (dispatcher) ->
@@ -33,5 +33,3 @@ class Posts
 
   _change: ->
     @_dispatcher.dispatch 'change'
-
-module.exports = Posts

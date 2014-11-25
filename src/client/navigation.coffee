@@ -2,7 +2,7 @@ Navigation = require '../actions/navigation.coffee'
 Dispatcher = require '../dispatcher.coffee'
 React = require 'react'
 
-class ClientNavigation extends Navigation
+Dispatcher.registerActionClass class extends Navigation
   _render: (action, getComponent, options) ->
     if action?
       @_dispatcher.addListener 'change', @_renderComponent(getComponent), 'render'
@@ -13,5 +13,3 @@ class ClientNavigation extends Navigation
 
   _renderComponent: (getComponent) -> ->
     React.renderComponent getComponent(), window.document.body
-
-Dispatcher.registerActionClass ClientNavigation

@@ -5,7 +5,7 @@ Navigation = require '../actions/navigation.coffee'
 Dispatcher = require '../dispatcher.coffee'
 files = require '../util/files.coffee'
 
-class ServerNavigation extends Navigation
+Dispatcher.registerActionClass class extends Navigation
   _render: (action, getComponent, options) ->
     if action?
       Q.spawn =>
@@ -21,5 +21,3 @@ class ServerNavigation extends Navigation
       html = template.data.replace '<body />', "<body>#{html}</body>"
       options.response.writeHead 200, 'Content-Type': 'text/html'
       options.response.end html
-
-Dispatcher.registerActionClass ServerNavigation

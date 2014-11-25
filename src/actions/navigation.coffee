@@ -5,7 +5,7 @@ Q = require 'q'
 constants = require './../constants.coffee'
 View = require('./../view.cjsx')
 
-module.exports = class Navigation
+module.exports = class
   actionName: 'navigation'
 
   constructor: (dispatcher) ->

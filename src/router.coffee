@@ -1,6 +1,6 @@
 constants = require './constants.coffee'
 
-module.exports = class Router
+module.exports = class
   routeRegexes: ->
     index: /^\/?$/
     about: /^\/?about$/

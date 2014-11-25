@@ -4,7 +4,7 @@ Q = require 'q'
 
 constants = require './../constants.coffee'
 
-module.exports = class Posts
+module.exports = class
   actionName: 'posts'
 
   constructor: (dispatcher) ->

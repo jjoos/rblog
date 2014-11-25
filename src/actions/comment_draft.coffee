@@ -4,7 +4,7 @@ Q = require 'q'
 
 constants = require './../constants.coffee'
 
-module.exports = class CommentDraft
+module.exports = class
   actionName: 'commentDraft'
 
   constructor: (dispatcher) ->
