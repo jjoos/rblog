@@ -1,7 +1,6 @@
-{Actions} = require './../../vendor/capacitor/src/capacitor.coffee'
+{Actions, Q} = require './../../vendor/eightyeight/src/eightyeight.coffee'
 request = require 'superagent'
 require('q-superagent') request
-Q = require 'q'
 
 constants = require './../constants.coffee'
 

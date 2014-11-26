@@ -1,4 +1,4 @@
-{Dispatcher} = require './../vendor/capacitor/src/capacitor.coffee'
+{Dispatcher} = require './../vendor/eightyeight/src/eightyeight.coffee'
 
 Dispatcher.registerStoreClass require('./stores/comment_draft.coffee')
 Dispatcher.registerStoreClass require('./stores/posts.coffee')

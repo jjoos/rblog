@@ -1,3 +1,4 @@
+Q = require 'q'
 React = require 'react'
 
 Dispatcher = require './dispatcher.coffee'
@@ -11,3 +12,4 @@ module.exports =
   Actions: Actions
   DispatcherHelper: DispatcherHelper
   React: React
+  Q: Q

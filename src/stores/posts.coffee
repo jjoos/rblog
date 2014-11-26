@@ -1,4 +1,4 @@
-{Store} = require './../../vendor/capacitor/src/capacitor.coffee'
+{Store} = require './../../vendor/eightyeight/src/eightyeight.coffee'
 
 constants = require './../constants.coffee'
 

@@ -1,14 +1,13 @@
-{Actions} = require './../../vendor/capacitor/src/capacitor.coffee'
+{Actions, Q} = require './../../vendor/eightyeight/src/eightyeight.coffee'
 request = require 'superagent'
 require('q-superagent') request
-Q = require 'q'
 
 constants = require './../constants.coffee'
 View = require('./../view.cjsx')
 
 module.exports = class extends Actions
   actionName: 'navigation'
-  
+
   index: (options) ->
     action = => @_dispatcher.actions('posts').fetchPosts()
     renderComponent = => View.renderIndex @_dispatcher
@@ -19,7 +18,7 @@ module.exports = class extends Actions
   post: (slug, options) ->
     action = => @_dispatcher.actions('posts').fetchPost(slug)
     renderComponent = => View.renderPost @_dispatcher
-    
+
     @_dispatcher.dispatch(constants.navigation.post, slug: slug).then =>
       @_render action, renderComponent, options
 
