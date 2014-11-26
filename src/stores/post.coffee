@@ -8,13 +8,10 @@ module.exports = class extends Store
   constructor: (dispatcher) ->
     super
 
-    @_registerEventHandlers()
-
-    @_posts ||= {}
-
-  _registerEventHandlers: ->
     @_addListener constants.post.fetchedComments, @_handleFetchedCommentsForPost
     @_addListener constants.post.fetched, @_handleFetchedPost
+
+    @_posts ||= {}
 
   data: ->
     {slug} = @_dispatcher.store('navigation').data()

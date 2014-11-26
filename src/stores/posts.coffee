@@ -8,12 +8,9 @@ module.exports = class extends Store
   constructor: (dispatcher) ->
     @_dispatcher = dispatcher
 
-    @_registerEventHandlers()
+    @_addListener constants.posts.fetched, @_handleFetchedPosts
     
     @_posts ||= {}
-
-  _registerEventHandlers: ->
-    @_addListener constants.posts.fetched, @_handleFetchedPosts
 
   data: ->
     if @_posts_fetched

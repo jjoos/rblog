@@ -8,9 +8,6 @@ module.exports = class extends Store
   constructor: (dispatcher) ->
     super
 
-    @_registerEventHandlers()
-
-  _registerEventHandlers: ->
     for _key, value of constants.navigation
       @_addListener value, (options) =>
         @_handleNavigation(options)

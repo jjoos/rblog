@@ -8,14 +8,11 @@ module.exports = class extends Store
   constructor: (dispatcher) ->
     super
 
-    @_registerEventHandlers()
+    @_addListener constants.comment.draft.attributeChanged, @_handleAttributeChanged
 
     @_draftBody = ''
     @_draftValid = false
     @_draftErrors = {}
-
-  _registerEventHandlers: ->
-    @_addListener constants.comment.draft.attributeChanged, @_handleAttributeChanged
 
   data: ->
     draft:
