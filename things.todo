@@ -6,13 +6,14 @@ Database:
   ☐ Investigate moving all to firebase
   ☐ Remove current seed and lorem ipsum
 Static assets:
-  ☐ Run nginx in the long run or deploy to cdn
+  ☐ run web pack server locally and deploy to cdn for production
   ✔ Serve images @done (14-11-20 12:20)
 Organization:
   ✔ grouping things arround subject (experiment, no benefits) @done (14-11-23 14:38)
   ✔ add central constants file @done (14-11-20 13:25)
 Functionality:
-  ☐ create navigation store
+  ☐ render markdown for posts
+  ✔ create navigation store @done (14-11-26 21:11)
   ☐ Write comments
   ☐ Sharing
   ☐ login
@@ -36,11 +37,12 @@ Tests:
 Framework:
   ✔ throttle dispatches, every action should return a promise that is kept track ok (cofffe-react). This way we can check if all the actions are done and add structures to wait on each other. This way we can make sure not two dispatches run at the same time. @done (14-11-24 22:24)
   ✔ throttle change events @done (14-11-24 22:24)
-  ☐ Let dispatcher helper use childContext
+  ✔ Let dispatcher helper use childContext @done (14-11-26 20:50)
   ✔ how to get data (posts, post, data: methods) (split out in stores) @done (14-11-25 16:32)
-  ☐ extract flux things
+  ✔ extract flux things @done (14-11-26 20:51)
   ☐ move flux things to npm package
   ☐ better error handling
+  ☐ investigate immutable javascript
   ☐ investigate using existing framework
 
 Reading list and references:
