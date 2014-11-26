@@ -1,18 +1,22 @@
 # @jsx React.DOM
-{DispatcherHelper, React} = require './../../vendor/capacitor/src/capacitor.coffee'
+{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
 
+BlogLayout = require './blog_layout.cjsx'
 Summary = require './summary.cjsx'
 
 module.exports = React.createClass
   displayName: 'Index'
 
+  mixins: [DispatcherHelper]
+
   posts: ->
-    for post in @props.posts
+    return null if @data('posts').state == 'loading'
+    for post in @data('posts').posts
       <Summary
         post={post}
         key={post.slug} />
 
   render: ->
-    <div>
+    <BlogLayout>
       {@posts()}
-    </div>
+    </BlogLayout>

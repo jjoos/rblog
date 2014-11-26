@@ -6,11 +6,14 @@ Comment = require './comment.cjsx'
 module.exports = React.createClass
   displayName: 'Comments'
 
+  mixins: [DispatcherHelper]
+
   comments: ->
-    for comment in @props.comments
+    return null if @data('post').loading
+    for comment in @data('post').comments
       <Comment
-        comment={comment}
-        key={comment.id} />
+          comment={comment}
+          key={comment.id} />
 
   render: ->
     <div>

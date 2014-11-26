@@ -9,13 +9,13 @@ module.exports = class extends Store
     @_dispatcher = dispatcher
 
     @_addListener constants.posts.fetched, @_handleFetchedPosts
-    
+
     @_posts ||= {}
 
   data: ->
     if @_posts_fetched
       state: 'success'
-      data: (post for _, post of @_posts)
+      posts: (post for _, post of @_posts)
     else
       state: 'loading'
 

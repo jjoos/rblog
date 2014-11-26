@@ -8,8 +8,14 @@ NewComment = require './new_comment.cjsx'
 module.exports = React.createClass
   displayName: 'Post'
 
+  mixins: [DispatcherHelper]
+
   render: ->
-    <article>
-      <h2>{@props.post.title}</h2>
-      <p>{@props.post.body}</p>
-    </article>
+    <BlogLayout>
+      <article>
+        <h2>{@data('post').post.title}</h2>
+        <p>{@data('post').post.body}</p>
+      </article>
+      <Comments />
+      <NewComment />
+    </BlogLayout>

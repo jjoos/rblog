@@ -6,6 +6,8 @@ SidebarSection = require './sidebar_section.cjsx'
 module.exports = React.createClass
   displayName: 'BlogLayout'
 
+  mixins: [DispatcherHelper]
+
   menu: ->
     <nav>
       <ul>
