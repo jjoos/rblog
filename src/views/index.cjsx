@@ -1,4 +1,3 @@
-# @jsx React.DOM
 {DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
 
 BlogLayout = require './blog_layout.cjsx'

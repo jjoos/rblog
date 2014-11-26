@@ -17,7 +17,7 @@ Dispatcher.registerActionClass class extends Navigation
 
   _renderComponent: (getComponent, options) ->
     files.getFile 'assets/template.html', (template) ->
-      html = React.renderComponentToString getComponent()
+      html = React.renderToString getComponent()
       html = template.data.replace '<body />', "<body>#{html}</body>"
       options.response.writeHead 200, 'Content-Type': 'text/html'
       options.response.end html

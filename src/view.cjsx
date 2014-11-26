@@ -1,4 +1,3 @@
-# @jsx React.DOM
 {React} = require './../vendor/eightyeight/src/eightyeight.coffee'
 
 BlogLayout = require './views/blog_layout.cjsx'

@@ -19,7 +19,7 @@
     "url": "https://github.com/jjoos/rblog/issues"
   },
   "devDependencies": {
-    "coffee-react": "^1.0.3",
+    "coffee-react": "^2.0.0",
     "coffee-reactify": "^1.0.3",
     "coffeelint": "git://github.com/jjoos/coffeelint-cjsx#with-trunk-coffeescript",
     "coffeescript": "git://github.com/jashkenas/coffeescript",
@@ -38,9 +38,7 @@
     "jquery": "2.1.1",
     "negotiator": "~0.4.8",
     "pg": "3.5.0",
-    "q": "^1.0.1",
     "q-superagent": "^1.0.1",
-    "react": "0.11.2",
     "sequelize": "~2.0.0-rc1",
     "superagent": "^0.21.0",
     "underscore": "1.7.0"
