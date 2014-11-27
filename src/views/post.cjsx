@@ -1,4 +1,5 @@
-{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Helper} = require 'onehundredfourtytwo'
+React = require 'react'
 
 BlogLayout = require './blog_layout.cjsx'
 Comments = require './comments.cjsx'
@@ -7,7 +8,7 @@ NewComment = require './new_comment.cjsx'
 module.exports = React.createClass
   displayName: 'Post'
 
-  mixins: [DispatcherHelper]
+  mixins: [Helper]
 
   render: ->
     <BlogLayout>

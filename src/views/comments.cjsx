@@ -1,11 +1,12 @@
-{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Helper} = require 'onehundredfourtytwo'
+React = require 'react'
 
 Comment = require './comment.cjsx'
 
 module.exports = React.createClass
   displayName: 'Comments'
 
-  mixins: [DispatcherHelper]
+  mixins: [Helper]
 
   comments: ->
     return null if @data('post').loading

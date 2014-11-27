@@ -1,4 +1,5 @@
-{Actions, Q} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Actions} = require 'onehundredfourtytwo'
+Q = require 'q'
 request = require 'superagent'
 require('q-superagent') request
 

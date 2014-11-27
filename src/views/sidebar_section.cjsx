@@ -1,9 +1,10 @@
-{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Helper} = require 'onehundredfourtytwo'
+React = require 'react'
 
 module.exports = React.createClass
   displayName: 'SidebarSection'
 
-  mixins: [DispatcherHelper]
+  mixins: [Helper]
 
   render: ->
     <section id={@props.id}>

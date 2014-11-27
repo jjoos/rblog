@@ -1,4 +1,5 @@
-{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Helper} = require 'onehundredfourtytwo'
+React = require 'react'
 
 BlogLayout = require './blog_layout.cjsx'
 Summary = require './summary.cjsx'
@@ -6,7 +7,7 @@ Summary = require './summary.cjsx'
 module.exports = React.createClass
   displayName: 'Index'
 
-  mixins: [DispatcherHelper]
+  mixins: [Helper]
 
   posts: ->
     return null if @data('posts').state == 'loading'

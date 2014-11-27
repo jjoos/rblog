@@ -1,4 +1,4 @@
-{React} = require './../vendor/eightyeight/src/eightyeight.coffee'
+React = require 'react'
 
 BlogLayout = require './views/blog_layout.cjsx'
 Index = require './views/index.cjsx'

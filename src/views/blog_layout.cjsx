@@ -1,11 +1,12 @@
-{DispatcherHelper, React} = require './../../vendor/eightyeight/src/eightyeight.coffee'
+{Helper} = require 'onehundredfourtytwo'
+React = require 'react'
 
 SidebarSection = require './sidebar_section.cjsx'
 
 module.exports = React.createClass
   displayName: 'BlogLayout'
 
-  mixins: [DispatcherHelper]
+  mixins: [Helper]
 
   menu: ->
     <nav>
