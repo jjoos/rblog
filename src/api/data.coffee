@@ -20,14 +20,13 @@ class Data
       post = post.dataValues
       @_posts[slug] = post
       @_posts[slug]['comments'] = []
-      comments = yield db.Comment.where('PostId': post.id).exec()
-      comments ||= []
+      comments = yield db.Comment.findAll(where: { PostId: post.id} )
 
-      @_posts[slug]['comments'] = comments.map (comment) -> comment.dataValues
-
-      for comment in @_posts[slug]['comments']
-        @_comments ||= {}
-        @_comments[comment.id] = comment
+      if comments?
+        @_posts[slug]['comments'].push comment.dataValues for comment in comments
+        for comment in @_posts[slug]['comments']
+          @_comments ||= {}
+          @_comments[comment.id] = comment
 
     async()
 
