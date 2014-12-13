@@ -1,7 +1,7 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-SidebarSection = require './sidebar_section.cjsx'
+SidebarSection = require './sidebar_section'
 
 module.exports = React.createClass
   displayName: 'BlogLayout'

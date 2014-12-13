@@ -1,9 +1,9 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-BlogLayout = require './blog_layout.cjsx'
-Comments = require './comments.cjsx'
-NewComment = require './new_comment.cjsx'
+BlogLayout = require './blog_layout'
+Comments = require './comments'
+NewComment = require './new_comment'
 
 module.exports = React.createClass
   displayName: 'Post'

@@ -1,5 +1,6 @@
-db = require './database.coffee'
 Q = require 'q'
+
+db = require './database'
 
 class Data
   updatePosts: ->

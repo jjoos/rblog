@@ -1,6 +1,7 @@
-Navigation = require '../actions/navigation.coffee'
-Dispatcher = require '../dispatcher.coffee'
 React = require 'react'
+
+Navigation = require '../actions/navigation'
+Dispatcher = require '../dispatcher'
 
 Dispatcher.registerActionClass class extends Navigation
   _render: (action, getComponent, options) ->

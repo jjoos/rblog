@@ -1,11 +1,11 @@
 http = require 'http'
 Negotiator = require 'negotiator'
 
-require '../util/configuration.coffee'
+require '../util/configuration'
 
-Dispatcher = require '../dispatcher.coffee'
-Router = require './router.coffee'
-require './navigation.coffee'
+Dispatcher = require '../dispatcher'
+Router = require './router'
+require './navigation'
 
 availableMediaTypes = ['text/html']
 

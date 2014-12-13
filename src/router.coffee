@@ -1,4 +1,4 @@
-constants = require './constants.coffee'
+constants = require './constants'
 
 module.exports = class
   routeRegexes: ->

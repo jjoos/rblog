@@ -1,9 +1,9 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 
-Router = require './router.coffee'
-Dispatcher = require '../dispatcher.coffee'
-require './navigation.coffee'
+Router = require './router'
+Dispatcher = require '../dispatcher'
+require './navigation'
 
 $(document).ready ->
   router = new Router(new Dispatcher)

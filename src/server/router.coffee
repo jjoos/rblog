@@ -1,4 +1,4 @@
-Router = require '../router.coffee'
+Router = require '../router'
 
 class ServerRouter extends Router
   navigate: (url, options) ->

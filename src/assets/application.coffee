@@ -1,8 +1,8 @@
 http = require 'http'
 Negotiator = require 'negotiator'
-files = require '../util/files.coffee'
 
-require '../util/configuration.coffee'
+files = require '../util/files'
+require '../util/configuration'
 
 availableMediaTypes = files.supportedContentTypes
 

@@ -1,8 +1,8 @@
 React = require 'react'
 
-BlogLayout = require './views/blog_layout.cjsx'
-Index = require './views/index.cjsx'
-Post = require './views/post.cjsx'
+BlogLayout = require './views/blog_layout'
+Index = require './views/index'
+Post = require './views/post'
 
 module.exports =
   renderIndex: (dispatcher) ->

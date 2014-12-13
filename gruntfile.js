@@ -15,7 +15,8 @@ module.exports = function(grunt) {
         dest: 'assets/client.js',
         options: {
           browserifyOptions: {
-            debug: true
+            debug: true,
+            extensions: ['.coffee', '.cjsx']
           },
           transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']]
         }
@@ -26,7 +27,8 @@ module.exports = function(grunt) {
         dest: 'assets/client.js',
         options: {
           browserifyOptions: {
-            debug: true
+            debug: true,
+            extensions: ['.coffee', '.cjsx']
           },
           transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']],
           watch: true,

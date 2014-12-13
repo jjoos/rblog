@@ -3,7 +3,7 @@ Q = require 'q'
 request = require 'superagent'
 require('q-superagent') request
 
-constants = require './../constants.coffee'
+constants = require './../constants'
 
 module.exports = class extends Actions
   actionName: 'commentDraft'

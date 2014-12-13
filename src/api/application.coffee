@@ -1,11 +1,11 @@
 http = require 'http'
 Negotiator = require 'negotiator'
 
-Data = require './data.coffee'
-db = require './database.coffee'
+Data = require './data'
+db = require './database'
 Q = require 'q'
 
-require '../util/configuration.coffee'
+require '../util/configuration'
 
 availableMediaTypes = ['application/json']
 

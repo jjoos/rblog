@@ -1,7 +1,7 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-Comment = require './comment.cjsx'
+Comment = require './comment'
 
 module.exports = React.createClass
   displayName: 'Comments'

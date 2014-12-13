@@ -1,9 +1,9 @@
 Q = require 'q'
 React = require 'react'
 
-Navigation = require '../actions/navigation.coffee'
-Dispatcher = require '../dispatcher.coffee'
-files = require '../util/files.coffee'
+Navigation = require '../actions/navigation'
+Dispatcher = require '../dispatcher'
+files = require '../util/files'
 
 Dispatcher.registerActionClass class extends Navigation
   _render: (action, getComponent, options) ->

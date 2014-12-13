@@ -3,8 +3,8 @@ Q = require 'q'
 request = require 'superagent'
 require('q-superagent') request
 
-constants = require './../constants.coffee'
-View = require('./../view.cjsx')
+constants = require './../constants'
+View = require('./../view')
 
 module.exports = class extends Actions
   actionName: 'navigation'

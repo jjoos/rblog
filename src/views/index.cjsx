@@ -1,8 +1,8 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-BlogLayout = require './blog_layout.cjsx'
-Summary = require './summary.cjsx'
+BlogLayout = require './blog_layout'
+Summary = require './summary'
 
 module.exports = React.createClass
   displayName: 'Index'

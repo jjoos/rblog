@@ -3,8 +3,8 @@ $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
 
-Router = require '../router.coffee'
-VirtualClass = require '../util/virtual-class.coffee'
+Router = require '../router'
+VirtualClass = require '../util/virtual-class'
 
 module.exports = class extends VirtualClass Backbone.Router, Router
   constructor: (dispatcher, view) ->

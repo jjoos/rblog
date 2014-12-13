@@ -1,6 +1,6 @@
 {Store} = require 'onehundredfourtytwo'
 
-constants = require './../constants.coffee'
+constants = require './../constants'
 
 module.exports = class extends Store
   storeName: 'navigation'
