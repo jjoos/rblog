@@ -22,7 +22,7 @@
     "cjsx-loader": "^1.0.1",
     "coffee-loader": "git://github.com/jjoos/coffee-loader",
     "coffee-react": "^2.0.0",
-    "coffee-reactify": "^1.0.3",
+    "coffee-reactify": "=2.1.0",
     "coffeelint": "git://github.com/jjoos/coffeelint-cjsx#with-trunk-coffeescript",
     "coffeescript": "git://github.com/jashkenas/coffeescript",
     "es6ify": "git://github.com/jjoos/es6ify",

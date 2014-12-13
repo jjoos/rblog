@@ -11,26 +11,26 @@ module.exports = class extends Actions
 
   index: (options) ->
     action = => @_dispatcher.actions('posts').fetchPosts()
-    renderComponent = => View.renderIndex @_dispatcher
+    render = => View.renderIndex @_dispatcher
 
     @_dispatcher.dispatch(constants.navigation.index).then =>
-      @_render action, renderComponent, options
+      @_render action, render, options
 
   post: (slug, options) ->
     action = => @_dispatcher.actions('posts').fetchPost(slug)
-    renderComponent = => View.renderPost @_dispatcher
+    render = => View.renderPost @_dispatcher
 
     @_dispatcher.dispatch(constants.navigation.post, slug: slug).then =>
-      @_render action, renderComponent, options
+      @_render action, render, options
 
   about: (options) ->
-    renderComponent = => View.renderAbout @_dispatcher
+    render = => View.renderAbout @_dispatcher
 
     @_dispatcher.dispatch(constants.navigation.about).then =>
-      @_render null, renderComponent, options
+      @_render null, render, options
 
   archive: (options) ->
-    renderComponent = => View.renderArchive @_dispatcher
+    render = => View.renderArchive @_dispatcher
 
     @_dispatcher.dispatch(constants.navigation.archive).then =>
-      @_render null, renderComponent, options
+      @_render null, render, options

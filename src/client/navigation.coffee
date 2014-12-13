@@ -13,4 +13,4 @@ Dispatcher.registerActionClass class extends Navigation
       @_renderComponent(getComponent)()
 
   _renderComponent: (getComponent) -> ->
-    React.renderComponent getComponent(), window.document.body
+    React.render getComponent(), window.document.body
