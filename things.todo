@@ -132,3 +132,24 @@ http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html :
 used layout:
 http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
 http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
+
+Dump:
+http://karma-runner.github.io/0.12/index.html
+https://github.com/umdjs/umd/
+https://github.com/bebraw/grunt-umd
+http://rathercurio.us/building-umd-modules-with-dependencies-with-browserify
+http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html
+http://esa-matti.suuronen.org/blog/2013/03/22/journey-from-requirejs-to-browserify/
+http://requirejs.org/docs/start.html#add
+http://pascalhertleif.de/artikel/using-promises-more-effectively/
+http://fitzgeraldnick.com/weblog/55/
+http://webpack.github.io/docs/configuration.html
+http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/
+http://webpack.github.io/docs/webpack-for-browserify-users.html
+http://spring.io/understanding/javascript-package-managers
+http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html
+http://esa-matti.suuronen.org/blog/2013/03/22/journey-from-requirejs-to-browserify/
+http://www.forbeslindesay.co.uk/post/46324645400/standalone-browserify-builds
+https://github.com/KyleAMathews/coffee-react-quickstart
+https://hackhands.com/fast-rich-client-rails-development-webpack-es6-transpiler/
+http://bdadam.com/blog/video-douglas-crockford-about-the-new-good-parts.html
