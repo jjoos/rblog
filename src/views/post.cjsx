@@ -1,5 +1,6 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
+commonmark = require 'commonmark'
 
 BlogLayout = require './blog_layout'
 Comments = require './comments'
@@ -11,10 +12,15 @@ module.exports = React.createClass
   mixins: [Helper]
 
   render: ->
+    reader = new commonmark.DocParser()
+    writer = new commonmark.HtmlRenderer()
+    parsed = reader.parse @data('post').post.body
+    result = writer.render(parsed)
+
     <BlogLayout>
       <article>
         <h2>{@data('post').post.title}</h2>
-        <p>{@data('post').post.body}</p>
+        <p dangerouslySetInnerHTML={__html: result} />
       </article>
       <Comments />
       <NewComment />

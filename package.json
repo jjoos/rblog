@@ -37,15 +37,16 @@
     "webpack": "^1.4.13"
   },
   "dependencies": {
-    "react": "0.12.1",
-    "q": "1.1.2",
-    "onehundredfourtytwo": "0.0.5",
     "backbone": "1.1.2",
+    "commonmark": "^0.12.0",
     "dotenv": "~0.4.0",
     "jquery": "2.1.1",
     "negotiator": "~0.4.8",
+    "onehundredfourtytwo": "0.0.9",
     "pg": "3.5.0",
+    "q": "1.1.2",
     "q-superagent": "^1.0.1",
+    "react": "0.12.1",
     "sequelize": "~2.0.0-rc1",
     "superagent": "^0.21.0",
     "underscore": "1.7.0"
