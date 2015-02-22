@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+brew unlink nginx
+brew uninstall nginx
+brew tap homebrew/nginx
+brew uninstall nginx-full
+brew install nginx-full --dev --with-headers-more-module --with-spdy --with-realip

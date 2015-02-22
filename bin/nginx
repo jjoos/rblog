@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Create correct config file
+sed -e "s/\\\$WEB_PORT/$WEB_PORT/g" \
+    -e "s/\\\$LOADBALANCER_HTTP_PORT/$LOADBALANCER_HTTP_PORT/g" \
+    -e "s/\\\$LOADBALANCER_HTTPS_PORT/$LOADBALANCER_HTTPS_PORT/g" \
+    -e "s/\\\$FQDN/$FQDN/g" \
+    -e "s/\\\$API_PORT/$API_PORT/g" \
+    config/nginx.development.conf > tmp/nginx/nginx.conf
+
+# Run nginx
+nginx -p './tmp/nginx' -c nginx.conf

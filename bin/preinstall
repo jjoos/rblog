@@ -23,5 +23,22 @@ API_PORT=3901
 ASSETS_PORT=3902
 DATABASE_PORT=3910
 DATABASE_HOST=localhost
+FQDN=lvh.me
+LOADBALANCER_HTTP_PORT=8080
+LOADBALANCER_HTTPS_PORT=8443
 DOTENVFILE
+fi
+source .env
+
+mkdir -p './tmp/pids'
+mkdir -p './tmp/nginx/logs'
+mkdir -p './tmp/nginx/certificates/'
+
+# Create certificates for nginx to use
+if [[ ! -f tmp/nginx/certificates/$FQDN.crt ]]; then
+
+  openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=$FQDN" -keyout tmp/nginx/certificates/$FQDN.key -out tmp/nginx/certificates/$FQDN.crt
+
+  #only do this on osx (opening so you can accept self signed cert) (may be we can use xdg_open on ubuntu?)
+  open tmp/nginx/certificates/$FQDN.crt &
 fi

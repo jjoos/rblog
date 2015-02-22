@@ -1,18 +1,29 @@
 Isomorphic javascript website with ReactJS poc:
 
 Todo:
-Database:
+Api:
   ✔ Implement models @done (14-11-20 12:20)
-  ☐ Investigate moving all to firebase
+  ✘ Investigate moving all to firebase  @cancelled (14-12-14 17:06)
+    To expensive not accessible for other people https://www.firebase.com/docs/hosting/ https://www.npmjs.com/package/firebase https://reactfiretodoapp.firebaseapp.com/ http://quaxio.com/react_tictactoe/ https://www.firebase.com/docs/web/libraries/react/quickstart.html https://www.firebase.com/blog/2014-05-01-using-firebase-with-react.html https://github.com/lvivier/firebase-reactive
   ☐ Remove current seed and lorem ipsum
+  ☐ Let's move api to a rails app
+Move server side to express:
+  https://github.com/strongloop/express
+Host the app on:
+  heroko: https://github.com/heroku/node-js-getting-started https://devcenter.heroku.com/articles/nodejs-support
+  http://www.evennode.com/
+  https://modulus.io/
+  https://www.nodejitsu.com/
+  http://cloudno.de/#!/home
 Static assets:
-  ☐ run web pack server locally and deploy to cdn for production
+  ✘ run web pack server locally and deploy to cdn for production @cancelled (14-12-14 17:06)
+    Let's serve assets with nginx
   ✔ Serve images @done (14-11-20 12:20)
 Organization:
   ✔ grouping things arround subject (experiment, no benefits) @done (14-11-23 14:38)
   ✔ add central constants file @done (14-11-20 13:25)
 Functionality:
-  ☐ render markdown for posts
+  ✔ render markdown for posts @done (14-12-13 22:30)
   ✔ create navigation store @done (14-11-26 21:11)
   ☐ Write comments
   ☐ Sharing
@@ -63,6 +74,7 @@ https://github.com/spoike/refluxjs
 https://github.com/yoshuawuyts/barracks
 http://deloreanjs.com/
 http://kenwheeler.github.io/mcfly/
+https://github.com/mjw56/ruscello
 
 routing:
 https://github.com/yahoo/routr
@@ -104,16 +116,31 @@ Components:
 http://tomchentw.github.io/react-google-maps/
 data  tables: https://github.com/glittershark/reactable
 
-appendix:
-https://github.com/reactjs/react-future/tree/0d451abb6e4ee1078d6761adda8a5247cbde1218
-http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html (original mvc paper)
+hot loading react components:
+  http://gaearon.github.io/react-hot-loader/
+  https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#migrating-to-10
 
-http://www.code-experience.com/avoiding-event-chains-in-single-page-applications/
+react.js tutorials:
+  http://projs.hackhat.com/react-js-an-interactive-tutorial-to-get-started/#header?utm_source=http://webdesignporto.com/react-js-in-pure-javascript-facebook-library/
+
+larger flux + react examples:
+https://github.com/ianobermiller/nuclearmail
 
 Styling:
 https://speakerdeck.com/vjeux/react-css-in-js
 
-http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html :
+used layout:
+http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
+http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
+
+appendix:
+https://github.com/yahoo/flux-examples/issues/70
+https://github.com/reactjs/react-future/tree/0d451abb6e4ee1078d6761adda8a5247cbde1218
+http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html (original mvc paper)
+http://www.code-experience.com/avoiding-event-chains-in-single-page-applications/
+http://merrickchristensen.com/articles/react-angular-di.html
+
+http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html =>
 - https://www.youtube.com/watch?v=i__969noyAM#t=206
 - https://github.com/yahoo/flux-router-component
 - https://github.com/yahoo/fetchr
@@ -129,11 +156,6 @@ http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html :
 - https://github.com/deloreanjs/delorean
 - https://www.youtube.com/watch?v=XhXC4SKOGfQ
 
-used layout:
-http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
-http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
-
-Dump:
 http://karma-runner.github.io/0.12/index.html
 https://github.com/umdjs/umd/
 https://github.com/bebraw/grunt-umd
@@ -153,3 +175,4 @@ http://www.forbeslindesay.co.uk/post/46324645400/standalone-browserify-builds
 https://github.com/KyleAMathews/coffee-react-quickstart
 https://hackhands.com/fast-rich-client-rails-development-webpack-es6-transpiler/
 http://bdadam.com/blog/video-douglas-crockford-about-the-new-good-parts.html
+https://www.youtube.com/watch?v=_frm9zfHK_c&feature=youtu.be
