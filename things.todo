@@ -103,6 +103,7 @@ Isomorphic websites:
 https://javascriptkicks.com/
 http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/
 http://www.slideshare.net/spikebrehm/2014-0313fluent
+http://nicolashery.com/exploring-isomorphic-javascript/
 
 Realtime:
 http://swarmjs.github.io/articles/todomvc/
@@ -116,6 +117,9 @@ Components:
 http://tomchentw.github.io/react-google-maps/
 data  tables: https://github.com/glittershark/reactable
 
+Different rendering backends:
+canvas: https://github.com/mjohnston/react-canvas/tree/ejecta/examples/ejecta
+
 hot loading react components:
   http://gaearon.github.io/react-hot-loader/
   https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#migrating-to-10
@@ -126,6 +130,10 @@ react.js tutorials:
 larger flux + react examples:
 https://github.com/ianobermiller/nuclearmail
 
+React best practices:
+https://gist.github.com/jamesgpearce/53a6fc57677870f93248
+http://aeflash.com/2015-02/react-tips-and-best-practices.html
+
 Styling:
 https://speakerdeck.com/vjeux/react-css-in-js
 
@@ -133,12 +141,26 @@ used layout:
 http://line25.com/tutorials/create-a-typography-based-blog-layout-in-html5
 http://line25.com/wp-content/uploads/2011/typo-code/demo/index.html
 
+relay and graphql:
+http://facebook.github.io/react/blog/2015/02/20/introducing-relay-and-graphql.html
+
 appendix:
+https://github.com/hughsk/disc
+https://www.youtube.com/watch?v=41YcEwv3njg&spfreload=10
+https://pomax.github.io/#gh-weblog-1419289380022
+https://blog.rotenberg.io/million-user-webchat-with-full-stack-flux-react-redis-and-postgresql/
+http://www.react-europe.org/
+http://facebook.github.io/react/blog/2015/02/18/react-conf-roundup-2015.html
+https://github.com/spoike/refluxjs
+https://github.com/facebook/flow
+https://medium.com/@dan_abramov/the-case-for-flux-379b7d1982c6
 https://github.com/yahoo/flux-examples/issues/70
 https://github.com/reactjs/react-future/tree/0d451abb6e4ee1078d6761adda8a5247cbde1218
 http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html (original mvc paper)
 http://www.code-experience.com/avoiding-event-chains-in-single-page-applications/
 http://merrickchristensen.com/articles/react-angular-di.html
+https://github.com/goatslacker/alt
+http://calendar.perfplanet.com/2013/diff/
 
 http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html =>
 - https://www.youtube.com/watch?v=i__969noyAM#t=206
@@ -155,6 +177,9 @@ http://facebook.github.io/react/blog/2014/10/17/community-roundup-23.html =>
 - http://blogs.atlassian.com/2014/08/flux-architecture-step-by-step/
 - https://github.com/deloreanjs/delorean
 - https://www.youtube.com/watch?v=XhXC4SKOGfQ
+
+http://omniscientjs.github.io/
+http://omniscientjs.github.io/playground/#var%20data%20%3D%20immstruct(%7B%0A%20%20items%3A%20%5B%0A%20%20%20%20%7B%20checked%3A%20true%2C%20text%3A%20'Create%20example%20an%20Omniscient%20playground!%20%3AD'%20%7D%2C%0A%20%20%20%20%7B%20checked%3A%20true%2C%20text%3A%20'Make%20it%20support%20es6!'%20%7D%2C%0A%20%20%20%20%7B%20checked%3A%20true%2C%20text%3A%20'And%20jsx!'%20%7D%2C%0A%20%20%20%20%7B%20checked%3A%20true%2C%20text%3A%20'It%20should%20compile%20as%20you%20type!'%20%7D%2C%0A%20%20%20%20%7B%20checked%3A%20true%2C%20text%3A%20'And%20give%20immediate%20feedback!'%20%7D%2C%0A%20%20%20%20%7B%20checked%3A%20false%2C%20text%3A%20'Make%20more%20examples!!1'%20%7D%0A%20%20%5D%0A%7D)%3B%0A%0A%2F%2F%20check%20your%20console%20to%20see%20omniscient's%20debug%20info%20for%20what%20needs%0A%2F%2F%20to%20render%20as%20the%20immstruct%20structure%20change!%0Acomponent.debug()%3B%0A%0Avar%20Item%20%3D%20component('Item'%2C%20function%20(%7Bitem%7D)%20%7B%0A%20%20var%20onChecked%20%3D%20()%20%3D%3E%20item.update('checked'%2C%20state%20%3D%3E%20!state)%3B%0A%20%20var%20style%20%3D%20%7B%20%0A%20%20%20%20textDecoration%3A%20item.get('checked')%20%3F%20'line-through'%20%3A%20'none'%2C%0A%20%20%20%20%2F%2F%20color%3A%20item.get('checked')%20%3F%20'green'%20%3A%20''%0A%20%20%7D%3B%0A%20%20return%20(%0A%20%20%20%20%3Clabel%20style%3D%7Bstyle%7D%3E%0A%20%20%20%20%20%20%3Cinput%20type%3D%22checkbox%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20onChange%3D%7BonChecked%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20checked%3D%7Bitem.get('checked')%7D%20%2F%3E%0A%20%20%20%20%20%20%20%7Bitem.get('text')%7D%0A%20%20%20%20%3C%2Flabel%3E%0A%20%20)%3B%0A%7D).jsx%3B%0A%0Avar%20List%20%3D%20component('List'%2C%20(%7Bitems%7D)%20%3D%3E%0A%20%20%3Cform%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%7Bitems.toArray().map((item%2C%20i)%20%3D%3E%0A%20%20%20%20%20%20%20%20%3Cli%20key%3D%7Bi%7D%3E%0A%20%20%20%20%20%20%20%20%20%20%3CItem%20item%3D%7Bitem%7D%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fli%3E%0A%20%20%20%20%20%20)%7D%0A%20%20%20%20%3C%2Ful%3E%0A%20%20%3C%2Fform%3E)%3B%0A%0Arender()%3B%0Adata.on('swap'%2C%20render)%3B%0A%0Afunction%20render%20()%20%7B%0A%20%20React.render(%0A%20%20%20%20List(%7B%20items%3A%20data.cursor('items')%20%7D)%2C%0A%20%20%20%20el)%3B%0A%7D%0A
 
 http://karma-runner.github.io/0.12/index.html
 https://github.com/umdjs/umd/
