@@ -34,6 +34,8 @@ mkdir -p './tmp/pids'
 mkdir -p './tmp/nginx/logs'
 mkdir -p './tmp/nginx/certificates/'
 
+cp /etc/nginx/mime.types tmp/nginx/mime.types
+
 # Create certificates for nginx to use
 if [[ ! -f tmp/nginx/certificates/$FQDN.crt ]]; then
 
