@@ -11,9 +11,7 @@ module.exports = React.createClass
   comments: ->
     return null if @data('post').loading
     for comment in @data('post').comments
-      <Comment
-          comment={comment}
-          key={comment.id} />
+      <Comment comment={comment} key={comment.id} />
 
   render: ->
     <div>

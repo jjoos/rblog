@@ -1,11 +1,7 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-module.exports = React.createClass
-  displayName: 'SidebarSection'
-
-  mixins: [Helper]
-
+module.exports = class SidebarSection extends React.Component
   render: ->
     <section id={@props.id}>
       <h3>{@props.title}</h3>

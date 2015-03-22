@@ -3,11 +3,7 @@ React = require 'react'
 
 SidebarSection = require './sidebar_section'
 
-module.exports = React.createClass
-  displayName: 'BlogLayout'
-
-  mixins: [Helper]
-
+module.exports = class BlogLayout extends React.Component
   menu: ->
     <nav>
       <ul>

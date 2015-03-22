@@ -1,9 +1,7 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-module.exports = React.createClass
-  displayName: 'Comment'
-
+module.exports = class Comment extends React.Component
   render: ->
     <div>
       <div>

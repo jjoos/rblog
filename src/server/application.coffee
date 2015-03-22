@@ -8,11 +8,9 @@ Dispatcher = require '../dispatcher'
 Router = require './router'
 require './navigation'
 
-availableMediaTypes = ['text/html']
-
 server = http.createServer (request, response) ->
   negotiator = new Negotiator request
-  type = negotiator.mediaType availableMediaTypes
+  type = negotiator.mediaType ['text/html']
 
   if type == 'text/html'
     router = new Router(new Dispatcher)

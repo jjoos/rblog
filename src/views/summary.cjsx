@@ -1,9 +1,7 @@
 {Helper} = require 'onehundredfourtytwo'
 React = require 'react'
 
-module.exports = React.createClass
-  displayName: 'Summary'
-
+module.exports = class Summary extends React.Component
   render: ->
     <article>
       <a href={"/posts/#{@props.post.slug}"}>
