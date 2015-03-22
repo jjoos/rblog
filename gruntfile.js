@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     watch: {
       lint: {
-        files: ['src/**/*.coffee'],
+        files: ['src/**/*.coffee', 'src/**/*.cjsx'],
         tasks: ['coffeelint']
       }
     },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     },
 
     coffeelint: {
-      app: ['src/**/*.coffee'],
+      app: ['src/**/*.cjsx', 'src/**/*.coffee'],
       options: {
         configFile: 'coffeelint.json'
       }

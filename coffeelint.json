@@ -1,12 +1,12 @@
 {
+    "coffeelint": {
+      "transforms": [ "coffee-react-transform" ]
+    },
     "arrow_spacing": {
         "level": "ignore"
     },
     "camel_case_classes": {
         "level": "error"
-    },
-    "cjsx": {
-        "transform": true
     },
     "coffeescript_error": {
         "level": "error"
@@ -38,8 +38,7 @@
     },
     "max_line_length": {
         "value": 100,
-        "level": "warn",
-        "limitComments": true
+        "level": "error"
     },
     "missing_fat_arrows": {
         "level": "ignore"
