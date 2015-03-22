@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             debug: true,
             extensions: ['.coffee', '.cjsx']
           },
-          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']]
+          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'babelify']]
         }
       },
 
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
             debug: true,
             extensions: ['.coffee', '.cjsx']
           },
-          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'es6ify']],
+          transform: ['coffee-reactify', [{filePattern: /\.(js|coffee|cjsx)$/}, 'babelify']],
           watch: true,
           keepAlive: true
         }
