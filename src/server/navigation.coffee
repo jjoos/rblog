@@ -3,7 +3,13 @@ React = require 'react'
 
 Navigation = require '../actions/navigation'
 Dispatcher = require '../dispatcher'
-files = require '../util/files'
+fs = require 'fs'
+
+getTemplate = (callback) ->
+  fs.readFile 'assets/template.html', encoding: 'utf8', (error, data) ->
+    return console.log error if error
+
+    callback data
 
 Dispatcher.registerActionClass class extends Navigation
   _render: (action, getComponent, options) ->
@@ -16,8 +22,8 @@ Dispatcher.registerActionClass class extends Navigation
       @_renderComponent getComponent, options
 
   _renderComponent: (getComponent, options) ->
-    files.getFile 'assets/template.html', (template) ->
+    getTemplate (template) ->
       html = React.renderToString getComponent()
-      html = template.data.replace '<body />', "<body>#{html}</body>"
+      html = template.replace '<body />', "<body>#{html}</body>"
       options.response.writeHead 200, 'Content-Type': 'text/html'
       options.response.end html
