@@ -13,12 +13,12 @@ module.exports = class extends Actions
       {slug} = @_dispatcher.store('navigation').data()
 
       requestPost = request
-        .get "http://localhost:3901/posts/#{slug}"
+        .get "https://api.lvh.me:8443/posts/#{slug}"
         .set 'Accept', 'application/json'
         .q()
 
       requestComments = request
-        .get "http://localhost:3901/posts/#{slug}/comments"
+        .get "https://api.lvh.me:8443/posts/#{slug}/comments"
         .set 'Accept', 'application/json'
         .q()
 
@@ -35,7 +35,7 @@ module.exports = class extends Actions
   fetchPosts: ->
     async = Q.async =>
       response = request
-        .get 'http://localhost:3901/posts'
+        .get 'https://api.lvh.me:8443/posts'
         .set 'Accept', 'application/json'
         .q()
 

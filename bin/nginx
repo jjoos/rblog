@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+ASSETS_PATH="$(pwd)/assets/"
+ASSETS_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $ASSETS_PATH)
 
 # Create correct config file
 sed -e "s/\\\$WEB_PORT/$WEB_PORT/g" \
@@ -6,7 +8,8 @@ sed -e "s/\\\$WEB_PORT/$WEB_PORT/g" \
     -e "s/\\\$LOADBALANCER_HTTPS_PORT/$LOADBALANCER_HTTPS_PORT/g" \
     -e "s/\\\$FQDN/$FQDN/g" \
     -e "s/\\\$API_PORT/$API_PORT/g" \
+    -e "s/\\\$ASSETS_PATH/$ASSETS_PATH/g" \
     config/nginx.development.conf > tmp/nginx/nginx.conf
 
 # Run nginx
-nginx -p './tmp/nginx' -c nginx.conf
+nginx  -c nginx.conf -p './tmp/nginx'

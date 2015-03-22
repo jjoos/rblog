@@ -83,6 +83,7 @@ http://backbonejs.org/#Router
 http://enome.github.io/javascript/2014/05/09/lets-create-our-own-router-component-with-react-js.html
 http://jilles.me/express-routing-the-beginners-guide/ (express router)
 https://github.com/rackt/react-router/wiki/Announcements
+https://github.com/ziad-saab/react-conditional-component
 
 blogs and other comments:
 http://www.techsonian.net/2014/09/from-backbone-to-react-our-experience-scaling-a-web-application/
@@ -201,3 +202,13 @@ https://github.com/KyleAMathews/coffee-react-quickstart
 https://hackhands.com/fast-rich-client-rails-development-webpack-es6-transpiler/
 http://bdadam.com/blog/video-douglas-crockford-about-the-new-good-parts.html
 https://www.youtube.com/watch?v=_frm9zfHK_c&feature=youtu.be
+
+http://react.rocks/
+
+search reusable components: http://react-components.com/ http://www.reactjsx.com/
+
+
+http://javascriptplayground.com/blog/2015/02/promises/
+
+
+http://blog.risingstack.com/from-angularjs-to-react-the-isomorphic-way/

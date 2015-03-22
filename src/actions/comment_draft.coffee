@@ -14,7 +14,7 @@ module.exports = class extends Actions
       {slug} = @_dispatcher.store('navigation').data()
 
       postCommentDraft = request
-        .post "http://localhost:3901/posts/#{slug}/comments"
+        .post "https://api.lvh.me:8443/posts/#{slug}/comments"
         .send draft
         .set 'Accept', 'application/json'
         .q()

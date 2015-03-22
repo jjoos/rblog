@@ -2,6 +2,7 @@ http = require 'http'
 Negotiator = require 'negotiator'
 
 require '../util/configuration'
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 Dispatcher = require '../dispatcher'
 Router = require './router'
