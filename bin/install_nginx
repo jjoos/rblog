@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-brew unlink nginx
-brew uninstall nginx
+brew unlink passenger
+brew uninstall passenger
+brew unlink nginx-full
+brew uninstall nginx-full
 brew tap homebrew/nginx
 brew uninstall nginx-full
-brew install nginx-full --dev --with-headers-more-module --with-spdy --with-realip
+brew install passenger nginx-full --dev --with-passenger --with-headers-more-module --with-spdy --with-realip

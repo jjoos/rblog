@@ -4,3 +4,5 @@ node_modules
 tmp
 assets/client.js
 .env
+.ruby-version
+npm-debug.log
