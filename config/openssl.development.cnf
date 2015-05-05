@@ -1,0 +1,22 @@
+[req]
+distinguished_name = dn
+req_extensions = v3_req
+prompt = no
+default_bits           = 4096
+
+[dn]
+countryName = US
+stateOrProvinceName = MN
+localityName = Minneapolis
+organizationalUnitName= Domain Control Validated
+commonName = Internet Widgits Ltd
+
+[ v3_req ]
+basicConstraints = CA:TRUE
+keyUsage = digitalSignature, keyEncipherment
+subjectAltName = @alternate_names
+
+[ alternate_names ]
+DNS.1 = lvh.me
+DNS.2 = api.lvh.me
+DNS.3 = cdn.lvh.me

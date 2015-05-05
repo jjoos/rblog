@@ -5,8 +5,14 @@ ASSETS_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $ASSETS_PATH)
 PASSENGER_ROOT="$(passenger-config --root)"
 PASSENGER_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $PASSENGER_ROOT)
 
-RAILS_ROOT="$(pwd)"
+RAILS_ROOT="$(pwd)/api"
 RAILS_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $RAILS_ROOT)
+
+TMP_ROOT="$(pwd)/tmp"
+TMP_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $TMP_ROOT)
+
+NODE_ROOT="$(pwd)/frontend"
+NODE_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $NODE_ROOT)
 
 RUBY_PATH="$(which ruby)"
 RUBY_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $RUBY_PATH)
@@ -20,6 +26,8 @@ sed -e "s/\\\$WEB_PORT/$WEB_PORT/g" \
     -e "s/\\\$RAILS_ROOT/$RAILS_ROOT/g" \
     -e "s/\\\$ASSETS_PATH/$ASSETS_PATH/g" \
     -e "s/\\\$PASSENGER_ROOT/$PASSENGER_ROOT/g" \
+    -e "s/\\\$NODE_ROOT/$NODE_ROOT/g" \
+    -e "s/\\\$TMP_ROOT/$TMP_ROOT/g" \
     -e "s/\\\$RUBY_PATH/$RUBY_PATH/g" \
     config/nginx.development.conf > tmp/nginx/nginx.conf
 

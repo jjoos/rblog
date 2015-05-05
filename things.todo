@@ -3,6 +3,7 @@ Isomorphic javascript website with ReactJS poc:
 Todo:
 Nginx:
 - Add to bin setup:  cp /usr/local/etc/nginx/mime.types tmp/nginx
+- make sure the .env is also availabel in the api project ln -s ../.env ./.env
 Api:
   ✔ Implement models @done (14-11-20 12:20)
   ✘ Investigate moving all to firebase  @cancelled (14-12-14 17:06)

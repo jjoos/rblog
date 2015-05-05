@@ -51,8 +51,6 @@
   "scripts": {
     "setup_database": "coffee --nodejs --harmony bin/setup_database.coffee",
     "start": "bin/start",
-    "preinstall": "bin/preinstall",
-    "postinstall": "bin/postinstall",
     "coffeelint": "coffeelint src/"
   }
 }

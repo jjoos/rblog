@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 function echoStep {
   printf $'\e[37;44m\033[1m'"$1"
   echo $'\033[0m'
@@ -32,16 +34,45 @@ DOTENVFILE
 fi
 source .env
 
+ln -s .env api/.env
+ln -s .env frontend/.env
+
 mkdir -p './tmp/pids'
 mkdir -p './tmp/nginx/logs'
 mkdir -p './tmp/nginx/certificates/'
 
-cp /etc/nginx/mime.types tmp/nginx/mime.types
+echoStep "Setting up frontend project"
+pushd frontend
+  npm install
+popd
 
+echoStep "Setting up database"
+if [[ ! -d ./tmp/postgres ]]; then
+  initdb './tmp/postgres' -E utf8 --locale en_US
+
+  echoStep "Starting postgres"
+
+  postgres -D 'tmp/postgres' -k . -p 3910 -h localhost &
+  POSTGRES_PID=$!
+  sleep 2
+
+  echoStep "Creating database"
+  createdb -p 3910 -h localhost rblog_development
+
+  # TODO: move to bx rake db:setup
+  #npm run setup_database
+
+  echoStep "Killed postgres and waiting two seconds for postgresql shutdown."
+  kill $POSTGRES_PID
+fi
+
+
+echoStep "Setting up nginx"
+cp /usr/local/etc/nginx/mime.types tmp/nginx
 # Create certificates for nginx to use
 if [[ ! -f tmp/nginx/certificates/$FQDN.crt ]]; then
 
-  openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=$FQDN" -keyout tmp/nginx/certificates/$FQDN.key -out tmp/nginx/certificates/$FQDN.crt
+  openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -config config/openssl.development.cnf -keyout tmp/nginx/certificates/$FQDN.key -out tmp/nginx/certificates/$FQDN.crt
 
   #only do this on osx (opening so you can accept self signed cert) (may be we can use xdg_open on ubuntu?)
   open tmp/nginx/certificates/$FQDN.crt &
