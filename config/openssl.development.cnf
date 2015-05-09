@@ -20,3 +20,4 @@ subjectAltName = @alternate_names
 DNS.1 = lvh.me
 DNS.2 = api.lvh.me
 DNS.3 = cdn.lvh.me
+DNS.4 = www.lvh.me

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+#$NODE_PATH=$(which node)
+
+#exec "/Users/jjoos/dev/jjoos/rblog/frontend/node_modules/.bin/cjsx" --nodejs --harmony "$@"
+exec "/Users/jjoos/.nvm/versions/io.js/v1.8.1/bin/node" --harmony "$@"

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+set -e
+
 ASSETS_PATH="$(pwd)/assets/"
 ASSETS_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $ASSETS_PATH)
 
@@ -13,6 +16,9 @@ TMP_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $TMP_ROOT)
 
 NODE_ROOT="$(pwd)/frontend"
 NODE_ROOT=$(sed -e 's/[\/&]/\\&/g' <<< $NODE_ROOT)
+
+NODE_PATH="$(pwd)/bin/node"
+NODE_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $NODE_PATH)
 
 RUBY_PATH="$(which ruby)"
 RUBY_PATH=$(sed -e 's/[\/&]/\\&/g' <<< $RUBY_PATH)
@@ -29,6 +35,7 @@ sed -e "s/\\\$WEB_PORT/$WEB_PORT/g" \
     -e "s/\\\$NODE_ROOT/$NODE_ROOT/g" \
     -e "s/\\\$TMP_ROOT/$TMP_ROOT/g" \
     -e "s/\\\$RUBY_PATH/$RUBY_PATH/g" \
+    -e "s/\\\$NODE_PATH/$NODE_PATH/g" \
     config/nginx.development.conf > tmp/nginx/nginx.conf
 
 # Run nginx
